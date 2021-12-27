@@ -5,7 +5,6 @@
  */
 package dbhelper;
 
-import Model.ModelFilm;
 import Model.ModelStaff;
 import java.sql.ResultSet;
 import java.sql.SQLException;
