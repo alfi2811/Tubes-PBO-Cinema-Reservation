@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/Model/ModelTransaction.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/dbhelper/DBConnect.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/dbhelper/DAOAdmin.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/View/Login.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/Controller/ControllerLogin.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/Model/ModelFilm.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/Model/ModelStaff.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/Driver/TubesPBO_Kelompok3_IF4304.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/Controller/ControllerAdmin.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/View/CashierDashboard.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/View/AdminDashboard.java</file>
-            <file>file:/D:/TELKOM%20UNIVERSITY/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/TUBES/Tubes-PBO-Cinema-Reservation/src/Model/ModelSchedule.java</file>
+            <file>file:/D:/Kuliah/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/Tugas%20Besar/Repo/Tubes-PBO-Cinema-Reservation/src/dbhelper/DAOStaff.java</file>
+            <file>file:/D:/Kuliah/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/Tugas%20Besar/Repo/Tubes-PBO-Cinema-Reservation/src/Model/ModelTransaction.java</file>
+            <file>file:/D:/Kuliah/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/Tugas%20Besar/Repo/Tubes-PBO-Cinema-Reservation/src/dbhelper/DAOAdmin.java</file>
+            <file>file:/D:/Kuliah/Semester%205/Pemrograman%20Berorientasi%20Objek/Tugas/Tugas%20Besar/Repo/Tubes-PBO-Cinema-Reservation/src/dbhelper/DAOKasir.java</file>
         </group>
     </open-files>
 </project-private>

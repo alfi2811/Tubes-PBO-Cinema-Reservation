@@ -64,14 +64,14 @@ public class DAOAdmin {
         }
     }
     
-    public List<ModelFilm> getFilm(String title) {
+    public ModelFilm getFilm(String title) {
         listFilm = new ArrayList<>();
+        ModelFilm film = new ModelFilm();
         try {
             ResultSet result;
             try (Statement statement = DBConnect.getConnection().createStatement()) {
                 result = statement.executeQuery("SELECT * FROM film WHERE title LIKE '%" + title + "%'");
                 while (result.next()) {
-                    ModelFilm film  = new ModelFilm();
                     film.setId_film(result.getInt(1));
                     film.setTitle(result.getString(2));
                     film.setGenre(result.getString(3));
@@ -81,7 +81,7 @@ public class DAOAdmin {
                 }
             }
             result.close();
-            return listFilm;
+            return film;
         } catch (SQLException sqle) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
             return null;
@@ -159,14 +159,14 @@ public class DAOAdmin {
         }
     }
     
-    public List<ModelSchedule> getSchedule(int film_id) {
+    public ModelSchedule getSchedule(int film_id) {
         listSchedule = new ArrayList<>();
+        ModelSchedule schedule  = new ModelSchedule();
         try {
             ResultSet result;
             try (Statement statement = DBConnect.getConnection().createStatement()) {
                 result = statement.executeQuery("SELECT * FROM schedule WHERE film_Id=?");
                 while (result.next()) {
-                    ModelSchedule schedule  = new ModelSchedule();
                     schedule.setId_schedule(result.getInt(1));
                     schedule.setFilm_id(result.getInt(2));
                     schedule.setTheater(result.getInt(3));
@@ -176,7 +176,7 @@ public class DAOAdmin {
                 }
             }
             result.close();
-            return listSchedule;
+            return schedule;
         } catch (SQLException sqle) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
             return null;
