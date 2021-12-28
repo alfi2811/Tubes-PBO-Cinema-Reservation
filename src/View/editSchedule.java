@@ -223,20 +223,29 @@ public class editSchedule extends javax.swing.JFrame {
     public int getID(){return Integer.parseInt(idField.getText());}
     public int getFilm(){return Integer.parseInt(filmField.getText());}
     public int getTheater(){return Integer.parseInt(theaterField.getText());}
-    public Date getTime() throws ParseException{
-        SimpleDateFormat timeStr = new SimpleDateFormat("HH:mm");
-        Date timeDate = timeStr.parse(timeField.getText());
-        return timeDate;
+    public String getTime() throws ParseException{
+//        SimpleDateFormat timeStr = new SimpleDateFormat("HH:mm");
+//        Date timeDate = timeStr.parse(timeField.getText());
+        return timeField.getText();
     }
     public int getPrice() throws ParseException{return Integer.parseInt(priceField.getText());}
 
     public JButton getEditButton() {return editButton;}
     public JButton getCancelButton() {return cancelButton;}
+    
     public JTextField getFilmField() {return filmField;}
     public JTextField getIdField() {return idField;}
     public JTextField getPriceField() {return priceField;}
     public JTextField getTheaterField() {return theaterField;}
     public JTextField getTimeField() {return timeField;}
+    
+    public void setDataSchedule(int id, int film_id, int price, int threater, String time){
+        this.idField.setText(Integer.toString(id));
+        this.filmField.setText(Integer.toString(film_id)); 
+        this.priceField.setText(Integer.toString(price));
+        this.theaterField.setText(Integer.toString(threater));
+        this.timeField.setText(time);
+    };
 
     public void actionListener(ActionListener listen){
         this.editButton.addActionListener(listen);

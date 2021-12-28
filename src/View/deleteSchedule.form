@@ -41,11 +41,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="showTheater" min="-2" max="-2" attributes="0"/>
-                  <Component id="showIDFilm" min="-2" max="-2" attributes="0"/>
+                  <Component id="showIDFilm" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="showID" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="showTheater" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="timeSchedule" min="-2" max="-2" attributes="0"/>
+                  <Component id="idSchedule" min="-2" max="-2" attributes="0"/>
+                  <Component id="filmIdSchedule" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="252" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,11 +61,20 @@
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Component id="question" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="showID" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="showID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="showIDFilm" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="showIDFilm" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="filmIdSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="showTheater" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="showTheater" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="timeSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="buttonYes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -101,7 +116,22 @@
     </Component>
     <Component class="javax.swing.JLabel" name="showTheater">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Theater:"/>
+        <Property name="text" type="java.lang.String" value="Time:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="idSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ww"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="filmIdSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="timeSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
   </SubComponents>

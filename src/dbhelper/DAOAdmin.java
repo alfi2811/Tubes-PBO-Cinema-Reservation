@@ -131,14 +131,14 @@ public class DAOAdmin {
     
     public void updateSchedule(ModelSchedule Schedule) {
         try {
-            Connection conn = DBConnect.getConnection();
-            String sql = "UPDATE schedule SET id_schedule=?, film_id=?, theater=?, time=?, price=?";
+            Connection conn = DBConnect.getConnection();            
+            String sql = "UPDATE schedule SET theater=?, time=?, price=? WHERE id_schedule=?";
             try(PreparedStatement statement = conn.prepareStatement(sql)){
-                statement.setString(1, String.valueOf(Schedule.getId_schedule()));
-                statement.setString(2, String.valueOf(Schedule.getFilm_id()));
-                statement.setString(3, String.valueOf(Schedule.getTheater()));
-                statement.setString(4, Schedule.getTime().toString());
-                statement.setString(5, String.valueOf(Schedule.getPrice()));
+                statement.setInt(1, Schedule.getTheater());
+                statement.setString(2, Schedule.getTime());
+                statement.setInt(3, Schedule.getPrice());
+                statement.setInt(4, Schedule.getId_schedule());
+                
                 statement.executeUpdate();
             }
         } catch (SQLException sqle) {

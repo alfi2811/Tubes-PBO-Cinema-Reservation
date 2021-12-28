@@ -35,7 +35,7 @@ public class ControllerLogin {
         String password = frmLogin.getPassword();                
         staff = daostaff.getStaff(username, password);
         
-        if(staff.getRole().equals("admin")) {
+        if(staff.getRole().equals("manajer")) {
             this.frmLogin.setVisible(false);
             cAdmin = new ControllerAdmin(staff);        
         } else {

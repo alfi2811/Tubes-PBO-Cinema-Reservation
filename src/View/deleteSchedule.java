@@ -36,6 +36,9 @@ public class deleteSchedule extends javax.swing.JFrame {
         showID = new javax.swing.JLabel();
         showIDFilm = new javax.swing.JLabel();
         showTheater = new javax.swing.JLabel();
+        idSchedule = new javax.swing.JLabel();
+        filmIdSchedule = new javax.swing.JLabel();
+        timeSchedule = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +57,13 @@ public class deleteSchedule extends javax.swing.JFrame {
 
         showIDFilm.setText("ID Film:");
 
-        showTheater.setText("Theater:");
+        showTheater.setText("Time:");
+
+        idSchedule.setText("ww");
+
+        filmIdSchedule.setText("jLabel1");
+
+        timeSchedule.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,10 +83,15 @@ public class deleteSchedule extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(173, 173, 173)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(showTheater)
                     .addComponent(showIDFilm)
-                    .addComponent(showID))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(showID)
+                    .addComponent(showTheater))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(timeSchedule)
+                    .addComponent(idSchedule)
+                    .addComponent(filmIdSchedule))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,11 +99,17 @@ public class deleteSchedule extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(question)
                 .addGap(26, 26, 26)
-                .addComponent(showID)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showID)
+                    .addComponent(idSchedule))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(showIDFilm)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showIDFilm)
+                    .addComponent(filmIdSchedule))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(showTheater)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showTheater)
+                    .addComponent(timeSchedule))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonYes)
@@ -145,18 +165,21 @@ public class deleteSchedule extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonNo;
     private javax.swing.JButton buttonYes;
+    private javax.swing.JLabel filmIdSchedule;
+    private javax.swing.JLabel idSchedule;
     private javax.swing.JLabel question;
     private javax.swing.JLabel showID;
     private javax.swing.JLabel showIDFilm;
     private javax.swing.JLabel showTheater;
+    private javax.swing.JLabel timeSchedule;
     // End of variables declaration//GEN-END:variables
 
-    public void setConfirm(int id, int idFilm, int theater) { 
-        this.showID.setText("ID: " + id); 
-        this.showIDFilm.setText("ID Film: " + idFilm); 
-        this.showTheater.setText("Theater: " + theater); 
+    public void setConfirm(int id, int idFilm, String theater) { 
+        this.idSchedule.setText(Integer.toString(id)); 
+        this.filmIdSchedule.setText(Integer.toString(idFilm)); 
+        this.timeSchedule.setText(theater); 
     }  
-
+    public int getID() { return Integer.parseInt(idSchedule.getText()); }
     public JButton getButtonNo() {return buttonNo;}
     public JButton getButtonYes() {return buttonYes;}
     
