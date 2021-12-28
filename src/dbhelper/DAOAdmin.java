@@ -22,11 +22,11 @@ public class DAOAdmin {
             Connection conn = DBConnect.getConnection();
             String sql = "INSERT INTO film (id_film, title, genre, date_start, date_end) VALUES (?,?,?,?,?)";
             try(PreparedStatement statement = conn.prepareStatement(sql)){
-                statement.setString(1, String.valueOf(Film.getId_film()));
+                statement.setString(1, null);
                 statement.setString(2, Film.getTitle());
                 statement.setString(3, Film.getGenre());
-                statement.setString(4, Film.getDate_start().toString());
-                statement.setString(5, Film.getDate_end().toString());
+                statement.setDate(4, Film.getDate_start());
+                statement.setDate(5, Film.getDate_end());
                 statement.executeUpdate();
             }
         } catch (SQLException sqle) {
@@ -37,13 +37,13 @@ public class DAOAdmin {
     public void updateFilm(ModelFilm Film) {
         try {
             Connection conn = DBConnect.getConnection();
-            String sql = "UPDATE film SET id_film=?, title=?, genre=?, date_start=?, date_end=?";
-            try(PreparedStatement statement = conn.prepareStatement(sql)){
-                statement.setString(1, String.valueOf(Film.getId_film()));
-                statement.setString(2, Film.getTitle());
-                statement.setString(3, Film.getGenre());
-                statement.setString(4, Film.getDate_start().toString());
-                statement.setString(5, Film.getDate_end().toString());
+            String sql = "UPDATE film SET title=?, genre=?, date_start=?, date_end=? WHERE id_film=?";
+            try(PreparedStatement statement = conn.prepareStatement(sql)){                
+                statement.setString(1, Film.getTitle());
+                statement.setString(2, Film.getGenre());
+                statement.setString(3, Film.getDate_start().toString());
+                statement.setString(4, Film.getDate_end().toString());
+                statement.setInt(5, Film.getId_film());
                 statement.executeUpdate();
             }
         } catch (SQLException sqle) {
@@ -115,13 +115,13 @@ public class DAOAdmin {
     public void insertSchedule(ModelSchedule Schedule) {
         try {
             Connection conn = DBConnect.getConnection();
-            String sql = "INSERT INTO schedule (id_schedule, film_id, theater, time, price) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO schedule (id_schedule, film_id, theater, time, price) VALUES (?,?,?,?,?)";            
             try(PreparedStatement statement = conn.prepareStatement(sql)){
-                statement.setString(1, String.valueOf(Schedule.getId_schedule()));
-                statement.setString(2, String.valueOf(Schedule.getFilm_id()));
-                statement.setString(3, String.valueOf(Schedule.getTheater()));
-                statement.setString(4, Schedule.getTime().toString());
-                statement.setString(5, String.valueOf(Schedule.getPrice()));
+                statement.setString(1, null);
+                statement.setInt(2, Schedule.getFilm_id());
+                statement.setInt(3, Schedule.getTheater());
+                statement.setString(4, Schedule.getTime());
+                statement.setInt(5, Schedule.getPrice());
                 statement.executeUpdate();
             }
         } catch (SQLException sqle) {
@@ -170,7 +170,7 @@ public class DAOAdmin {
                     schedule.setId_schedule(result.getInt(1));
                     schedule.setFilm_id(result.getInt(2));
                     schedule.setTheater(result.getInt(3));
-                    schedule.setTime(result.getDate(4));
+                    schedule.setTime(result.getString(4));
                     schedule.setPrice(result.getInt(5));
                     listSchedule.add(schedule);
                 }
@@ -188,23 +188,24 @@ public class DAOAdmin {
         try {
             ResultSet result;
             try (Statement statement = DBConnect.getConnection().createStatement()) {
-                result = statement.executeQuery("SELECT * FROM film WHERE film_Id=?");
+                String sql = "SELECT * FROM schedule WHERE film_Id="+ film_id;                
+                result = statement.executeQuery(sql);
                 while (result.next()) {
                     ModelSchedule schedule  = new ModelSchedule();
                     schedule.setId_schedule(result.getInt(1));
                     schedule.setFilm_id(result.getInt(2));
                     schedule.setTheater(result.getInt(3));
-                    schedule.setTime(result.getDate(4));
+                    schedule.setTime(result.getString(4));
                     schedule.setPrice(result.getInt(5));
                     listSchedule.add(schedule);
                 }
-            }
+            }            
             result.close();
             return listSchedule;
         } catch (SQLException sqle) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
             return null;
-        }
+        }                
     }
     
 }

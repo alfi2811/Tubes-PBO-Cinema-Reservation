@@ -6,12 +6,12 @@ public class ModelSchedule {
     private int id_schedule;
     private int film_id;
     private int theater;
-    private Date time;
+    private String time;
     private int price;
 
     public ModelSchedule() {}
 
-    public ModelSchedule(int id_schedule, int film_id, int theater, Date time, int price) {
+    public ModelSchedule(int id_schedule, int film_id, int theater, String time, int price) {
         this.id_schedule = id_schedule;
         this.film_id = film_id;
         this.theater = theater;
@@ -43,11 +43,11 @@ public class ModelSchedule {
         this.theater = theater;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

@@ -215,10 +215,10 @@ public class addSchedule extends javax.swing.JFrame {
     public int getID(){return Integer.parseInt(idField.getText());}
     public int getFilm(){return Integer.parseInt(filmField.getText());}
     public int getTheater(){return Integer.parseInt(theaterField.getText());}
-    public Date getTime() throws ParseException{
-        SimpleDateFormat timeStr = new SimpleDateFormat("HH:mm");
-        Date timeDate = timeStr.parse(timeField.getText());
-        return timeDate;
+    public String getTime() throws ParseException{
+//        SimpleDateFormat timeStr = new SimpleDateFormat("HH:mm");
+//        Date timeDate = timeStr.parse(timeField.getText());
+        return timeField.getText();
     }
     public int getPrice() throws ParseException{return Integer.parseInt(priceField.getText());}
     
