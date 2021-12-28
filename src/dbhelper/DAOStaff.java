@@ -6,6 +6,8 @@
 package dbhelper;
 
 import Model.ModelStaff;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -47,6 +49,55 @@ public class DAOStaff {
         } catch (SQLException sqle) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
             return null;
+        }
+    }
+    
+    public void insertStaff(ModelStaff Staff) {
+        try {
+            Connection conn = DBConnect.getConnection();
+            String sql = "INSERT INTO staff (id_staff, name, username, password, phone, role) VALUES (?,?,?,?,?,?)";
+            try(PreparedStatement statement = conn.prepareStatement(sql)){
+                statement.setString(1, null);
+                statement.setString(2, Staff.getName());
+                statement.setString(3, Staff.getUsername());
+                statement.setString(4, Staff.getPassword());
+                statement.setString(5, Staff.getPhone());
+                statement.setString(6, Staff.getRole());
+                statement.executeUpdate();
+            }
+        } catch (SQLException sqle) {
+            Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+    }
+
+    public void updateStaff(ModelStaff Staff) {
+        try {
+            Connection conn = DBConnect.getConnection();
+            String sql = "UPDATE staff SET name=?, username=?, password=?, phone=?, role=? WHERE id_staff=?";
+            try(PreparedStatement statement = conn.prepareStatement(sql)){                
+                statement.setString(1, Staff.getName());
+                statement.setString(2, Staff.getUsername());
+                statement.setString(3, Staff.getPassword());
+                statement.setString(4, Staff.getPhone());
+                statement.setString(5, Staff.getRole());
+                statement.setInt(6, Staff.getId_staff());
+                statement.executeUpdate();
+            }
+        } catch (SQLException sqle) {
+            Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+    }
+
+    public void deleteFilm(int id_staff) {
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "DELETE FROM staff WHERE id_staff=?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, id_staff);
+                statement.executeUpdate();
+            }
+        } catch (SQLException sqle) {
+            Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, sqle);
         }
     }
 }
