@@ -231,6 +231,14 @@ public class editFilm extends javax.swing.JFrame {
         Date endDate = end.parse(dateEndField.getText());
         return endDate;
     }
+    
+    public void setDataFilm(int id, String title, String genre, String start_date, String end_date){
+        this.idField.setText(Integer.toString(id));
+        this.titleField.setText(title); 
+        this.genreField.setText(genre);
+        this.dateStartField.setText(start_date);
+        this.dateEndField.setText(end_date);        
+    };
 
     public JButton getEditButton() {return editButton;}    
     public JButton getCancelButton() {return cancelButton;}

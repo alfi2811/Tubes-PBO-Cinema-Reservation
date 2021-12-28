@@ -8,6 +8,7 @@ package View;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
 /**
@@ -33,7 +34,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        filmTab = new javax.swing.JTabbedPane();
+        adminTab = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelFilm = new javax.swing.JTable();
@@ -85,7 +86,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        filmTab.addTab("Film", jPanel1);
+        adminTab.addTab("Film", jPanel1);
 
         tabelSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,7 +118,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        filmTab.addTab("Schedule", jPanel2);
+        adminTab.addTab("Schedule", jPanel2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -127,7 +128,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(filmTab, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminTab, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
@@ -136,7 +137,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(filmTab, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminTab, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -266,12 +267,12 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane adminTab;
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonLogOut;
     private javax.swing.JButton buttonRefresh;
-    private javax.swing.JTabbedPane filmTab;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -290,6 +291,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     public JButton getButtonDelete(){return buttonDelete;}
     public JTable getTabelFilm(){return tabelFilm;}
     public JTable getTabelSchedule(){return tabelSchedule;}
+    public JTabbedPane getTabAdmin(){return this.adminTab;}
     
     public void actionListener(ActionListener listen){
         this.buttonRefresh.addActionListener(listen);
@@ -302,6 +304,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     public void mouseAdapter(MouseAdapter mouse){
         this.tabelFilm.addMouseListener(mouse);
         this.tabelSchedule.addMouseListener(mouse);
+        this.adminTab.addMouseListener(mouse);
     }
 
 

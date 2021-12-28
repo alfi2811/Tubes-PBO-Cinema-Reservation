@@ -35,6 +35,8 @@ public class deleteFilm extends javax.swing.JFrame {
         buttonNo = new javax.swing.JButton();
         showID = new javax.swing.JLabel();
         showTitle = new javax.swing.JLabel();
+        idFilm = new javax.swing.JLabel();
+        titleFilm = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,11 +70,18 @@ public class deleteFilm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(showID)
                             .addComponent(buttonYes))
-                        .addGap(118, 118, 118)
-                        .addComponent(buttonNo))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(buttonNo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(idFilm))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(showTitle)))
+                        .addComponent(showTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(titleFilm)))
                 .addGap(0, 160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,9 +90,13 @@ public class deleteFilm extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(question)
                 .addGap(38, 38, 38)
-                .addComponent(showID)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showID)
+                    .addComponent(idFilm))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(showTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showTitle)
+                    .addComponent(titleFilm))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonYes)
@@ -136,15 +149,19 @@ public class deleteFilm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonNo;
     private javax.swing.JButton buttonYes;
+    private javax.swing.JLabel idFilm;
     private javax.swing.JLabel question;
     private javax.swing.JLabel showID;
     private javax.swing.JLabel showTitle;
+    private javax.swing.JLabel titleFilm;
     // End of variables declaration//GEN-END:variables
 
     public void setConfirm(int id, String title) { 
-        this.showID.setText("ID: " + id); 
-        this.showTitle.setText("Title: " + title); 
+        this.idFilm.setText(Integer.toString(id)); 
+        this.titleFilm.setText(title); 
     }  
+    
+    public int getID(){return Integer.parseInt(idFilm.getText());}
 
     public JButton getButtonNo() {return buttonNo;}
     public JButton getButtonYes() {return buttonYes;}
