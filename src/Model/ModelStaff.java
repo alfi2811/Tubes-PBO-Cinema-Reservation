@@ -10,11 +10,12 @@ public class ModelStaff {
 
     public ModelStaff() {}
 
-    public ModelStaff(int id_staff, String name, String username, String password, String role) {
+    public ModelStaff(int id_staff, String name, String username, String password, String phone, String role) {
         this.id_staff = id_staff;
         this.name = name;
         this.username = username;
         this.password = password;
+        this.phone = phone;
         this.role = role;
     }
 
