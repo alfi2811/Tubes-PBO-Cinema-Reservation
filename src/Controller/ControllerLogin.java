@@ -22,6 +22,8 @@ public class ControllerLogin {
     private ModelStaff staff;
     private DAOStaff daostaff;
     private ControllerAdmin cAdmin;
+    private ControllerCashier cCashier;
+    
     
     public ControllerLogin(Login frmlogin) {        
         this.frmLogin = frmlogin;     
@@ -35,9 +37,12 @@ public class ControllerLogin {
         String password = frmLogin.getPassword();                
         staff = daostaff.getStaff(username, password);
         
-        if(staff.getRole().equals("admin")) {
+        if(staff.getRole().equals("manajer")) {
             this.frmLogin.setVisible(false);
             cAdmin = new ControllerAdmin(staff);        
+        } else if (staff.getRole().equals("kasir")) {
+            this.frmLogin.setVisible(false);
+            cCashier = new ControllerCashier(staff); 
         } else {
             System.out.println("gagal");
         }

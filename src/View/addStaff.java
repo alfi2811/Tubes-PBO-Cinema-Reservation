@@ -40,11 +40,11 @@ public class addStaff extends javax.swing.JFrame {
         cancelButton = new javax.swing.JButton();
         password = new javax.swing.JLabel();
         role = new javax.swing.JLabel();
-        passwordField = new javax.swing.JTextField();
         nameField = new javax.swing.JTextField();
         usernameField = new javax.swing.JTextField();
         roleField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,17 +94,16 @@ public class addStaff extends javax.swing.JFrame {
                             .addComponent(password)
                             .addComponent(role))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nameField)
-                                .addComponent(usernameField)
-                                .addComponent(phoneField)
-                                .addComponent(roleField)
-                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(addButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cancelButton)))
+                                .addComponent(cancelButton))
+                            .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(usernameField)
+                            .addComponent(phoneField)
+                            .addComponent(roleField)
+                            .addComponent(passwordField))
                         .addGap(193, 193, 193))))
         );
         layout.setVerticalGroup(
@@ -119,11 +118,11 @@ public class addStaff extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(username)
-                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(password)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phone)
@@ -136,7 +135,7 @@ public class addStaff extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
                     .addComponent(cancelButton))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,7 +190,7 @@ public class addStaff extends javax.swing.JFrame {
     private javax.swing.JLabel name;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel password;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel phone;
     private javax.swing.JTextField phoneField;
     private javax.swing.JLabel role;
@@ -201,9 +200,12 @@ public class addStaff extends javax.swing.JFrame {
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 
+    public void setTitle(String title) {
+        this.title.setText("Hi, " + title);
+    }
     public String getName(){return nameField.getText();}
     public String getUsername(){return usernameField.getText();}
-    public String getPassword(){return passwordField.getText();}
+    public String getPassword(){return String.valueOf(passwordField.getPassword());}
     public String getPhone(){return phoneField.getText();}
     public String getRole(){return roleField.getText();}
     

@@ -221,6 +221,9 @@ public class addSchedule extends javax.swing.JFrame {
         return timeField.getText();
     }
     public int getPrice() throws ParseException{return Integer.parseInt(priceField.getText());}
+    public void setTitle(String title) {
+        this.title.setText("Hi, " + title);
+    }
     
     public JButton getAddButton() {return addButton;}
     public JButton getCancelButton() {return cancelButton;}
