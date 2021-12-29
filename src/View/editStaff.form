@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -37,23 +37,32 @@
                           <Component id="username" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="password" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="role" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="126" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="nameField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="phoneField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="roleField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="passwordField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="editButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="idStaff" min="-2" pref="34" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="314" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="nameField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="phoneField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="roleField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="passwordField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="editButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -64,7 +73,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Component id="title" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idStaff" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="name" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -89,7 +103,7 @@
                   <Component id="role" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="roleField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="editButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -158,6 +172,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="phoneField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="idStaff">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" "/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

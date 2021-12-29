@@ -231,6 +231,9 @@ public class addFilm extends javax.swing.JFrame {
         Date endDate = end.parse(dateEndField.getText());
         return endDate;
     }
+    public void setTitle(String title) {
+        this.title.setText("Hi, " + title);
+    }
     
     public JButton getAddButton() {return addButton;}
     public JButton getCancelButton() {return cancelButton;}

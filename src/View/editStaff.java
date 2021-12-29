@@ -44,6 +44,8 @@ public class editStaff extends javax.swing.JFrame {
         roleField = new javax.swing.JTextField();
         editButton = new javax.swing.JButton();
         phoneField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        idStaff = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,43 +77,57 @@ public class editStaff extends javax.swing.JFrame {
 
         editButton.setText("Edit");
 
+        jLabel1.setText("ID");
+
+        idStaff.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(128, 128, 128)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(title)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(name)
                             .addComponent(phone)
                             .addComponent(username)
                             .addComponent(password)
-                            .addComponent(role))
+                            .addComponent(role)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nameField)
-                                .addComponent(usernameField)
-                                .addComponent(phoneField)
-                                .addComponent(roleField)
-                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(editButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cancelButton)))
-                        .addGap(193, 193, 193))))
+                                .addComponent(idStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(314, 314, 314))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(nameField)
+                                        .addComponent(usernameField)
+                                        .addComponent(phoneField)
+                                        .addComponent(roleField)
+                                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(editButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cancelButton)))
+                                .addGap(193, 193, 193))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(title)
-                .addGap(37, 37, 37)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(idStaff))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name)
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,7 +147,7 @@ public class editStaff extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role)
                     .addComponent(roleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton)
                     .addComponent(cancelButton))
@@ -187,6 +203,8 @@ public class editStaff extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton editButton;
+    private javax.swing.JLabel idStaff;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel name;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel password;
@@ -200,13 +218,19 @@ public class editStaff extends javax.swing.JFrame {
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 
+    public int getID(){return Integer.parseInt(idStaff.getText());}
     public String getName(){return nameField.getText();}
     public String getUsername(){return usernameField.getText();}
     public String getPassword(){return passwordField.getText();}
     public String getPhone(){return phoneField.getText();}
     public String getRole(){return roleField.getText();}
     
-    public void setDataStaff(String name, String username, String password, String phone, String role){
+    public void setTitle(String title) {
+        this.title.setText("Hi, " + title);
+    }
+    
+    public void setDataStaff(int id, String name, String username, String password, String phone, String role){
+        this.idStaff.setText(Integer.toString(id));
         this.nameField.setText(name);
         this.usernameField.setText(username);
         this.passwordField.setText(password);

@@ -12,11 +12,15 @@ import Model.ModelStaff;
 import View.AdminDashboard;
 import View.addFilm;
 import View.addSchedule;
+import View.addStaff;
 import View.deleteFilm;
 import View.editFilm;
+import View.editStaff;
 import View.editSchedule;
 import View.deleteSchedule;
+import View.deleteStaff;
 import dbhelper.DAOAdmin;
+import dbhelper.DAOStaff;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -33,8 +37,11 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerAdmin {
     private List<ModelFilm> list;
     private List<ModelSchedule> listSchedule;
+    private List<ModelStaff> listStaff;
+    
     private ModelStaff staff;
     private ModelFilm film;
+    
     private AdminDashboard frmAdminDashboard;
     private addFilm frmAddFilm;
     private editFilm frmEditFilm;
@@ -44,7 +51,12 @@ public class ControllerAdmin {
     private editSchedule frmEditSchedule;
     private deleteSchedule frmDeleteSchedule;
     
+    private addStaff frmAddStaff;   
+    private editStaff frmEditStaff;   
+    private deleteStaff frmDeleteStaff;   
+    
     private DAOAdmin daoadmin;
+    private DAOStaff daostaff;
     
     public ControllerAdmin(ModelStaff staff) {        
         this.staff = staff;        
@@ -69,9 +81,19 @@ public class ControllerAdmin {
         frmDeleteSchedule = new deleteSchedule();
         this.frmDeleteSchedule.actionListener(new ControllerAdmin.ButtonListener());
         
+        frmAddStaff = new addStaff();
+        this.frmAddStaff.actionListener(new ControllerAdmin.ButtonListener());
+        frmEditStaff = new editStaff();
+        this.frmEditStaff.actionListener(new ControllerAdmin.ButtonListener());
+        frmDeleteStaff = new deleteStaff();
+        this.frmDeleteStaff.actionListener(new ControllerAdmin.ButtonListener());
+        
         daoadmin = new DAOAdmin();
+        daostaff = new DAOStaff();
         this.frmAdminDashboard.setVisible(true);
-        loadList();                
+        this.frmAdminDashboard.setTitle(staff.getName());
+        loadList();  
+        loadListStaff();
     }
     public final void loadList(){
         DefaultTableModel tbl = (DefaultTableModel) frmAdminDashboard.getTabelFilm().getModel();        
@@ -82,6 +104,18 @@ public class ControllerAdmin {
         list.forEach((data) -> {
             System.out.println(data.getTitle());
             tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_film(), data.getTitle(), data.getGenre(), data.getDate_start(), data.getDate_end()});
+        });
+    }
+    
+    public final void loadListStaff(){
+        DefaultTableModel tbl = (DefaultTableModel) frmAdminDashboard.getTabelStaff().getModel();        
+        
+        tbl.setRowCount(0);        
+        listStaff = daostaff.getAllStaff();
+        
+        listStaff.forEach((data) -> {
+            System.out.println(data.getName());
+            tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_staff(), data.getName(), data.getUsername(), data.getPhone(), data.getRole()});
         });
     }
     
@@ -102,8 +136,7 @@ public class ControllerAdmin {
             System.out.println(data.getPrice());
             tblSchedule.insertRow(tblSchedule.getRowCount(), 
                     new Object[]{data.getId_schedule(), data.getFilm_id(), data.getTheater(), data.getTime(), data.getPrice()});
-        });
-           
+        });           
     }
     
     public final void insertFilm() throws ParseException{
@@ -131,6 +164,21 @@ public class ControllerAdmin {
         daoadmin.insertSchedule(scheduleNew);
         loadListSchedule();
         frmAddSchedule.setVisible(false);
+        frmAdminDashboard.setVisible(true);
+    }
+    
+    public final void insertStaff() throws ParseException{
+        ModelStaff staffNew = new ModelStaff();
+        staffNew.setName(frmAddStaff.getName());
+        staffNew.setUsername(frmAddStaff.getUsername());
+        staffNew.setPassword(frmAddStaff.getPassword());
+        staffNew.setPhone(frmAddStaff.getPhone());
+        staffNew.setRole(frmAddStaff.getRole());
+        System.out.println(staffNew.getPhone());
+        
+        daostaff.insertStaff(staffNew);
+        loadListStaff();
+        frmAddStaff.setVisible(false);
         frmAdminDashboard.setVisible(true);
     }
     
@@ -166,6 +214,22 @@ public class ControllerAdmin {
         frmAdminDashboard.setVisible(true);
     }
     
+    public final void editStaff() throws ParseException {
+        ModelStaff staffEdit = new ModelStaff();
+        staffEdit.setId_staff(frmEditStaff.getID());
+        staffEdit.setName(frmEditStaff.getName());
+        staffEdit.setUsername(frmEditStaff.getUsername());
+        staffEdit.setPassword(frmEditStaff.getPassword());
+        staffEdit.setPhone(frmEditStaff.getPhone());
+        staffEdit.setRole(frmEditStaff.getRole());
+        
+        System.out.println(staffEdit.getUsername());
+        daostaff.updateStaff(staffEdit);
+        loadListStaff();
+        frmEditStaff.setVisible(false);
+        frmAdminDashboard.setVisible(true);
+    }
+    
     public final void deleteFilm() {
         int id = frmDeleteFilm.getID();
         daoadmin.deleteFilm(id);
@@ -182,6 +246,14 @@ public class ControllerAdmin {
         frmAdminDashboard.setVisible(true);
     }
     
+    public final void deleteStaff() {
+        int id = frmDeleteStaff.getID();
+        daostaff.deleteStaff(id);
+        loadListStaff();
+        frmDeleteStaff.setVisible(false);
+        frmAdminDashboard.setVisible(true);
+    }
+    
     public class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -189,10 +261,14 @@ public class ControllerAdmin {
             if (source.equals(frmAdminDashboard.getButtonAdd())) {
                 int tabIdx = frmAdminDashboard.getTabAdmin().getSelectedIndex();
                 if(tabIdx == 0) {
-                    System.out.println("tab: " + tabIdx);
-                    frmAddFilm.setVisible(true);                    
+                    frmAddFilm.setTitle(staff.getName());
+                    frmAddFilm.setVisible(true);
                 } else if (tabIdx == 1) {
+                    frmAddSchedule.setTitle(staff.getName());
                     frmAddSchedule.setVisible(true);                    
+                } else if (tabIdx == 2) {
+                    frmAddStaff.setTitle(staff.getName());
+                    frmAddStaff.setVisible(true);                    
                 }
                 frmAdminDashboard.setVisible(false);
             } else if (source.equals(frmAdminDashboard.getButtonRefresh())) {
@@ -211,6 +287,12 @@ public class ControllerAdmin {
                 } catch (ParseException ex) {
                     Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } else if (source.equals(frmAddStaff.getAddButton())) {
+                try {
+                    insertStaff();
+                } catch (ParseException ex) {
+                    Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (source.equals(frmAdminDashboard.getButtonEdit())) {
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();
                 int j = frmAdminDashboard.getTabelSchedule().getSelectedRow();
@@ -219,6 +301,7 @@ public class ControllerAdmin {
                 if (tabIdx == 1 && j > -1) {
                     ModelSchedule scheduleSelected = listSchedule.get(j);
                     System.out.println("selected scheduled: " + scheduleSelected.getPrice());
+                    frmEditSchedule.setTitle(staff.getName());
                     frmEditSchedule.setDataSchedule(
                             scheduleSelected.getId_schedule(),
                             scheduleSelected.getFilm_id(),
@@ -228,9 +311,25 @@ public class ControllerAdmin {
                     );
                     frmEditSchedule.setVisible(true);
                     frmAdminDashboard.setVisible(false);
+                } else if (tabIdx == 2) {
+                    int idx = frmAdminDashboard.getTabelStaff().getSelectedRow();
+                    ModelStaff staffSelected = listStaff.get(idx);
+                    System.out.println("selected: " + staffSelected.getName());
+                    frmEditStaff.setTitle(staff.getName());
+                    frmEditStaff.setDataStaff(
+                            staffSelected.getId_staff(),
+                            staffSelected.getName(), 
+                            staffSelected.getUsername(),
+                            staffSelected.getPassword(),
+                            staffSelected.getPhone(),
+                            staffSelected.getRole());
+                    
+                    frmEditStaff.setVisible(true);
+                    frmAdminDashboard.setVisible(false);
                 } else {
                     ModelFilm filmSelected = list.get(i);
                     System.out.println("selected: " + filmSelected.getTitle());
+                    frmEditFilm.setTitle(staff.getName());
                     frmEditFilm.setDataFilm(
                             filmSelected.getId_film(), 
                             filmSelected.getTitle(), 
@@ -254,6 +353,12 @@ public class ControllerAdmin {
                 } catch (ParseException ex) {
                     Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } else if (source.equals(frmEditStaff.getEditButton())) {
+                try {
+                    editStaff();
+                } catch (ParseException ex) {
+                    Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (source.equals(frmAdminDashboard.getButtonDelete())) {                
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();
                 int j = frmAdminDashboard.getTabelSchedule().getSelectedRow();
@@ -263,6 +368,12 @@ public class ControllerAdmin {
                     ModelSchedule scheduleSelected = listSchedule.get(j);
                     frmDeleteSchedule.setConfirm(scheduleSelected.getId_schedule(), scheduleSelected.getFilm_id(), scheduleSelected.getTime());
                     frmDeleteSchedule.setVisible(true);
+                    frmAdminDashboard.setVisible(false);
+                } else if (tabIdx == 2) {                    
+                    int idx = frmAdminDashboard.getTabelStaff().getSelectedRow();
+                    ModelStaff staffSelected = listStaff.get(idx);
+                    frmDeleteStaff.setConfirm(staffSelected.getId_staff(), staffSelected.getName(), staffSelected.getRole());
+                    frmDeleteStaff.setVisible(true);
                     frmAdminDashboard.setVisible(false);
                 } else {
                     System.out.println("i: " + i);
@@ -275,13 +386,20 @@ public class ControllerAdmin {
                 deleteFilm();
             } else if (source.equals(frmDeleteSchedule.getButtonYes())) {
                 deleteSchedule();
-            } else if (source.equals(frmDeleteFilm.getButtonNo()) || source.equals(frmDeleteSchedule.getButtonNo())) {
+            } else if (source.equals(frmDeleteStaff.getButtonYes())) {
+                deleteStaff();
+            } else if (source.equals(frmDeleteFilm.getButtonNo()) || source.equals(frmDeleteSchedule.getButtonNo())
+                    || source.equals(frmDeleteStaff.getButtonNo())) {
                 frmDeleteFilm.setVisible(false);
                 frmDeleteSchedule.setVisible(false);
+                frmDeleteStaff.setVisible(false);
                 frmAdminDashboard.setVisible(true);
-            } else if (source.equals(frmAddFilm.getCancelButton()) || source.equals(frmEditFilm.getCancelButton()) ) {
+            } else if (source.equals(frmAddFilm.getCancelButton()) || source.equals(frmEditFilm.getCancelButton()) 
+                    || source.equals(frmAddSchedule.getCancelButton()) || source.equals(frmEditSchedule.getCancelButton())) {
                 frmAddFilm.setVisible(false);
                 frmEditFilm.setVisible(false);
+                frmAddSchedule.setVisible(false);
+                frmEditSchedule.setVisible(false);
                 frmAdminDashboard.setVisible(true);
             }
         }        
@@ -292,11 +410,11 @@ public class ControllerAdmin {
         public void mousePressed(MouseEvent me) {
             // compiled code
             Object source = me.getSource();
-            if (source.equals(frmAdminDashboard.getTabelFilm())) {
+            if (source.equals(frmAdminDashboard.getTabelFilm()) || source.equals(frmAdminDashboard.getTabelStaff())) {
                 System.out.println("aaaaa");
                 frmAdminDashboard.getButtonEdit().setEnabled(true);
                 frmAdminDashboard.getButtonDelete().setEnabled(true);
-                loadListSchedule();
+                loadListSchedule();                
             } else if (source.equals(frmAdminDashboard.getTabAdmin())) {                              
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();                
                 int tabIdx = frmAdminDashboard.getTabAdmin().getSelectedIndex();                    

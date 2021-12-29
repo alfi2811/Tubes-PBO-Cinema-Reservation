@@ -59,6 +59,12 @@ public class deleteStaff extends javax.swing.JFrame {
 
         showRole.setText("Role:");
 
+        idStaff.setText("id");
+
+        nameStaff.setText("name");
+
+        roleStaff.setText("role");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,19 +79,19 @@ public class deleteStaff extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(showRole)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(27, 27, 27)
                                 .addComponent(roleStaff))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(showName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nameStaff))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(showID)
-                                .addGap(49, 49, 49)
-                                .addComponent(idStaff))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(showName)
+                                    .addComponent(showID))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nameStaff)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(question)))

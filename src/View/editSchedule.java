@@ -239,6 +239,10 @@ public class editSchedule extends javax.swing.JFrame {
     public JTextField getTheaterField() {return theaterField;}
     public JTextField getTimeField() {return timeField;}
     
+    public void setTitle(String title) {
+        this.title.setText("Hi, " + title);
+    }
+    
     public void setDataSchedule(int id, int film_id, int price, int threater, String time){
         this.idField.setText(Integer.toString(id));
         this.filmField.setText(Integer.toString(film_id)); 

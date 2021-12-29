@@ -33,17 +33,15 @@ public class DAOKasir {
     }
     
     //Untuk menampilkan list film yang hari ini sedang tayang
-    public List<ModelFilm> getNowShowing(Date date_start, Date date_end) {
-        listFilm = new ArrayList<>();
-        ModelFilm film = new ModelFilm();
+    public List<ModelFilm> getNowShowing(Date date_now) {
+        listFilm = new ArrayList<>();        
         try {
             ResultSet result;
-            try (Statement statement = DBConnect.getConnection().createStatement()) {
-                
+            try (Statement statement = DBConnect.getConnection().createStatement()) {                
                 //Date today = <tanggal hari ini>
-                result = statement.executeQuery("SELECT * FROM film WHERE date_start <= today AND date_end >= today");
-                
+                result = statement.executeQuery("SELECT * FROM `film` WHERE `date_start` <= '"+ date_now +"' AND `date_end` >= '"+ date_now +"'");
                 while (result.next()) {
+                    ModelFilm film = new ModelFilm();
                     film.setId_film(result.getInt(1));
                     film.setTitle(result.getString(2));
                     film.setGenre(result.getString(3));
@@ -52,7 +50,7 @@ public class DAOKasir {
                     listFilm.add(film);
                 }
             }
-            result.close();
+            result.close();            
             return listFilm;
         } catch (SQLException sqle) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);

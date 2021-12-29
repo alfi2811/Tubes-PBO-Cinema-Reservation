@@ -34,21 +34,22 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="showRole" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="roleStaff" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="showName" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="nameStaff" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="showID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                              <Component id="idStaff" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="showName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="showID" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="idStaff" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="nameStaff" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -126,10 +127,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="idStaff">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="id"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="nameStaff">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="name"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="roleStaff">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="role"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

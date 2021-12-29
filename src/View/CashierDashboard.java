@@ -8,6 +8,7 @@ package View;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 /**
  *
@@ -199,6 +200,12 @@ public class CashierDashboard extends javax.swing.JFrame {
     public JButton getButtonRefresh(){return buttonRefresh;}
     public JButton getButtonLogOut(){return buttonLogOut;}
     public JButton getButtonChoose(){return buttonChoose;}    
+    public JList getListFilm(){
+        return this.listFilm;
+    }
+    public JList getListSchedule(){
+        return this.listSchedule;
+    }
     
     public void actionListener(ActionListener listen){
         this.buttonRefresh.addActionListener(listen);

@@ -39,19 +39,17 @@
                           <Component id="role" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="116" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="nameField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="phoneField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="roleField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="passwordField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="addButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="nameField" alignment="0" pref="155" max="32767" attributes="0"/>
+                          <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="phoneField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="roleField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                   </Group>
@@ -71,13 +69,13 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="username" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="usernameField" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="username" min="-2" max="-2" attributes="0"/>
+                  <Component id="usernameField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="password" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="passwordField" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="password" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordField" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -94,7 +92,7 @@
                   <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -146,8 +144,6 @@
         <Property name="text" type="java.lang.String" value="Role"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="passwordField">
-    </Component>
     <Component class="javax.swing.JTextField" name="nameField">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameFieldActionPerformed"/>
@@ -158,6 +154,8 @@
     <Component class="javax.swing.JTextField" name="roleField">
     </Component>
     <Component class="javax.swing.JTextField" name="phoneField">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="passwordField">
     </Component>
   </SubComponents>
 </Form>

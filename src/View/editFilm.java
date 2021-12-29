@@ -232,6 +232,10 @@ public class editFilm extends javax.swing.JFrame {
         return endDate;
     }
     
+    public void setTitle(String title) {
+        this.title.setText("Hi, " + title);
+    }
+    
     public void setDataFilm(int id, String title, String genre, String start_date, String end_date){
         this.idField.setText(Integer.toString(id));
         this.titleField.setText(title); 
