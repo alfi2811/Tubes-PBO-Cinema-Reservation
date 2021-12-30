@@ -34,7 +34,6 @@ public class CashierDashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        buttonRefresh = new javax.swing.JButton();
         buttonLogOut = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -50,9 +49,6 @@ public class CashierDashboard extends javax.swing.JFrame {
         title.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         title.setText("Hi");
 
-        buttonRefresh.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        buttonRefresh.setText("Refresh");
-
         buttonLogOut.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         buttonLogOut.setText("Logout");
 
@@ -63,9 +59,7 @@ public class CashierDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
-                .addComponent(buttonRefresh)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
                 .addComponent(buttonLogOut)
                 .addGap(58, 58, 58))
         );
@@ -78,9 +72,7 @@ public class CashierDashboard extends javax.swing.JFrame {
                         .addComponent(title))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonRefresh)
-                            .addComponent(buttonLogOut))))
+                        .addComponent(buttonLogOut)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -209,7 +201,6 @@ public class CashierDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonChoose;
     private javax.swing.JButton buttonLogOut;
-    private javax.swing.JButton buttonRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -220,8 +211,7 @@ public class CashierDashboard extends javax.swing.JFrame {
     private javax.swing.JList<String> listSchedule;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
-
-    public JButton getButtonRefresh(){return buttonRefresh;}
+    
     public JButton getButtonLogOut(){return buttonLogOut;}
     public JButton getButtonChoose(){return buttonChoose;}    
     public JList getListFilm(){ return this.listFilm; }
@@ -229,8 +219,7 @@ public class CashierDashboard extends javax.swing.JFrame {
     
     public void setTitle(String title){ this.title.setText("Hi, " + title); }
     
-    public void actionListener(ActionListener listen){
-        this.buttonRefresh.addActionListener(listen);
+    public void actionListener(ActionListener listen){       
         this.buttonLogOut.addActionListener(listen);
         this.buttonChoose.addActionListener(listen);
     }

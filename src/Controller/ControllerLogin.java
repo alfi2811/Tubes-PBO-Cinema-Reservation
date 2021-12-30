@@ -52,8 +52,7 @@ public class ControllerLogin {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {                
-                case "Login":
-                    System.out.println("masuk");
+                case "Login":                    
                     checkLogin();
                     break;                
                 default:

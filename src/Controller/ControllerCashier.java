@@ -69,8 +69,7 @@ public class ControllerCashier {
         transaction.setDate_buy(dateNow);
         listFilm = daokasir.getNowShowing(dateNow);
         DefaultListModel dataList = new DefaultListModel();
-        listFilm.forEach((p) -> {
-            System.out.println(p.getTitle());
+        listFilm.forEach((p) -> {            
             dataList.addElement(p.getTitle());
         });     
         
@@ -80,8 +79,7 @@ public class ControllerCashier {
     public final void loadListSchedule(int idFilm){                
         listSchedule = daoadmin.getAllSchedule(idFilm);
         DefaultListModel dataList = new DefaultListModel();
-        listSchedule.forEach((p) -> {
-            System.out.println(p.getPrice());
+        listSchedule.forEach((p) -> {            
             dataList.addElement(p.getTime());
         });     
         
@@ -94,11 +92,9 @@ public class ControllerCashier {
         listSeat = daokasir.getSeatAvailable(scheduleSel.getId_schedule(), transaction.getDate_buy());
         
         DefaultListModel dataList = new DefaultListModel();
-        listSeat.forEach((p) -> {
-            System.out.println(p);   
+        listSeat.forEach((p) -> {            
             String[] arr = p.split("\\,", -1);
-            for (String arr1 : arr) {
-                System.out.println(arr1);
+            for (String arr1 : arr) {                
                 listSeatNew.add(arr1);
             }
         });
@@ -125,11 +121,17 @@ public class ControllerCashier {
                 transaction.getTotal_price()
         );
     }
-    public final void insertDataTransaction(){        
-        transaction.setSeat(frmChooseSeat.getSeat());
-        String[] arr = frmChooseSeat.getSeat().split("\\,", -1);
-        int totalPrice = scheduleSel.getPrice() * arr.length;
-        transaction.setTotal_price(totalPrice);
+    public final void insertDataTransaction(){    
+        if(frmChooseSeat.getSeat().equals("")) {
+            frmChooseSeat.displayError();
+        } else {
+            System.out.println("a"+ frmChooseSeat.getSeat());
+            String[] arr = frmChooseSeat.getSeat().split("\\,", -1);
+            transaction.setSeat(frmChooseSeat.getSeat());                
+            int totalPrice = scheduleSel.getPrice() * arr.length;
+            transaction.setTotal_price(totalPrice);
+            loadConfirmTransaction();
+        }        
     }
     
     public final void insertTransaction(){        
@@ -163,8 +165,7 @@ public class ControllerCashier {
                 frmCashierDashboard.setVisible(false);
                 frmChooseSeat.setVisible(true);
             } else if (source.equals(frmChooseSeat.getButtonChoose())) {
-                insertDataTransaction();
-                loadConfirmTransaction();
+                insertDataTransaction();                
                 frmConfirmTransaction.setVisible(true);                
                 frmChooseSeat.setVisible(false);
             } else if (source.equals(frmConfirmTransaction.getButtonBuy())) {
@@ -177,9 +178,11 @@ public class ControllerCashier {
             } else if (source.equals(frmSuccessTransaction.getButtonHome())) {
                 frmSuccessTransaction.setVisible(false);                
                 goToHomePage();
-            } else if (source.equals(frmConfirmTransaction.getButtonCancel())) {
+            } else if (source.equals(frmConfirmTransaction.getButtonCancel()) || source.equals(frmChooseSeat.getButtonCancel())) {
                 frmConfirmTransaction.setVisible(false);    
-                goToHomePage();                
+                frmChooseSeat.setVisible(false);    
+                frmCashierDashboard.getButtonChoose().setEnabled(false);
+                goToHomePage();
             } else if (source.equals(frmCashierDashboard.getButtonLogOut())) {                
                 logout();
             }
