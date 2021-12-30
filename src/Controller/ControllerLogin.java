@@ -25,9 +25,11 @@ public class ControllerLogin {
     private ControllerCashier cCashier;
     
     
-    public ControllerLogin(Login frmlogin) {        
-        this.frmLogin = frmlogin;     
+    public ControllerLogin() {        
+        this.frmLogin = new Login();        
         this.frmLogin.actionListener(new ButtonListener());
+        this.frmLogin.setVisible(true);
+        this.frmLogin.setLocationRelativeTo(null);
         daostaff = new DAOStaff();
     }
     public void checkLogin(){
@@ -35,16 +37,15 @@ public class ControllerLogin {
         
         String username = frmLogin.getUsername();        
         String password = frmLogin.getPassword();                
-        staff = daostaff.getStaff(username, password);
-        
+        staff = daostaff.getStaff(username, password);        
         if(staff.getRole().equals("manajer")) {
             this.frmLogin.setVisible(false);
             cAdmin = new ControllerAdmin(staff);        
         } else if (staff.getRole().equals("kasir")) {
             this.frmLogin.setVisible(false);
             cCashier = new ControllerCashier(staff); 
-        } else {
-            System.out.println("gagal");
+        } else {            
+            this.frmLogin.displayError();
         }
     }
     public class ButtonListener implements ActionListener {

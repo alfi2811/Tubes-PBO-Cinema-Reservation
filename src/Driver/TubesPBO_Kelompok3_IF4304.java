@@ -18,11 +18,8 @@ public class TubesPBO_Kelompok3_IF4304 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here        
-        Login frmLogin = new Login();
-        ControllerLogin controller = new ControllerLogin(frmLogin);
-        frmLogin.setVisible(true);
-        frmLogin.setLocationRelativeTo(null);
+        // TODO code application logic here                
+        ControllerLogin controller = new ControllerLogin();        
     }
     
 }

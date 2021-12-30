@@ -32,26 +32,49 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="idTrans" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="filmName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="date" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="time" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="theater" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="price" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="showPrice" min="-2" max="-2" attributes="0"/>
-                          <Component id="showTheater" min="-2" max="-2" attributes="0"/>
-                          <Component id="showTime" min="-2" max="-2" attributes="0"/>
-                          <Component id="showDate" min="-2" max="-2" attributes="0"/>
-                          <Component id="showName" min="-2" max="-2" attributes="0"/>
                           <Component id="showIDTrans" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="showPrice" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="totalPrice" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="showTheater" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="theaterSchedule" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="showTime" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="timeSchedule" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="showName" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="nameFilm" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="showDate" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="dateSchedule" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
                       <Component id="buttonBuy" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="119" max="32767" attributes="0"/>
@@ -64,38 +87,43 @@
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="title" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="idTrans" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="showIDTrans" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="showIDTrans" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="filmName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="showName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nameFilm" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="date" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="showDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateSchedule" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="time" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="showTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="timeSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="theater" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="showTheater" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="theaterSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="price" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="showPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="totalPrice" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
-              <Component id="buttonBuy" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="buttonBuy" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,11 +135,6 @@
           <Font name="Century Gothic" size="36" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Transaction Confirmation"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="idTrans">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ID Transaction: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="filmName">
@@ -155,6 +178,36 @@
     <Component class="javax.swing.JLabel" name="showTheater">
     </Component>
     <Component class="javax.swing.JLabel" name="showPrice">
+    </Component>
+    <Component class="javax.swing.JLabel" name="nameFilm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="timeSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="theaterSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="totalPrice">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonCancel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

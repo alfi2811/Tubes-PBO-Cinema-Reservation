@@ -14,17 +14,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DAOKasir {
-        private List<ModelFilm> listFilm;
+    private List<ModelFilm> listFilm;
+    private List<String> listSeat;    
     
     public void insertTransaction(ModelTransaction Transaction) {
         try {
             Connection conn = DBConnect.getConnection();
-            String sql = "INSERT INTO transaction (id_transaction, schedule_id, seat, total_price) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO transaction (id_transaction, schedule_id, seat, total_price, date_buy) VALUES (?,?,?,?,?)";
             try(PreparedStatement statement = conn.prepareStatement(sql)){
                 statement.setString(1, null);
                 statement.setInt(2, Transaction.getSchedule_id());
                 statement.setString(3, Transaction.getSeat());
                 statement.setInt(4, Transaction.getTotal_price());
+                statement.setDate(5, Transaction.getDate_buy());
                 statement.executeUpdate();
             }
         } catch (SQLException sqle) {
@@ -52,6 +54,27 @@ public class DAOKasir {
             }
             result.close();            
             return listFilm;
+        } catch (SQLException sqle) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
+            return null;
+        }
+    }
+    
+    //Untuk menampilkan list seat yang tersedia
+    public List<String> getSeatAvailable(int schedule_id, Date date_buy) {
+        listSeat = new ArrayList<>();        
+        try {
+            ResultSet result;
+            try (Statement statement = DBConnect.getConnection().createStatement()) {                
+                //Date today = <tanggal hari ini>
+                result = statement.executeQuery("SELECT `seat` FROM `transaction` WHERE `schedule_id` = "+ schedule_id +" AND `date_buy` = '"+ date_buy +"'");
+                while (result.next()) {
+                    String seat = result.getString(1);                    
+                    listSeat.add(seat);
+                }
+            }
+            result.close();            
+            return listSeat;
         } catch (SQLException sqle) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
             return null;

@@ -1,7 +1,6 @@
 package dbhelper;
 
-import Model.ModelFilm;
-import Model.ModelSchedule;
+import Model.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +14,7 @@ import java.util.logging.Logger;
 public class DAOAdmin {
     private List<ModelFilm> listFilm;
     private List<ModelSchedule> listSchedule;
+    private List<ModelTransaction> listTransaction;
     
     
     public void insertFilm(ModelFilm Film) {
@@ -206,6 +206,30 @@ public class DAOAdmin {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
             return null;
         }                
+    }
+    
+    public List<ModelTransaction> getAllTransaction() {
+        listTransaction = new ArrayList<>();
+        try {
+            ResultSet result;
+            try (Statement statement = DBConnect.getConnection().createStatement()) {
+                result = statement.executeQuery("SELECT * FROM transaction");
+                while (result.next()) {
+                    ModelTransaction transac  = new ModelTransaction();
+                    transac.setId_transaction(result.getInt(1));
+                    transac.setSchedule_id(result.getInt(2));
+                    transac.setSeat(result.getString(3));
+                    transac.setTotal_price(result.getInt(4));
+                    transac.setDate_buy(result.getDate(5));
+                    listTransaction.add(transac);
+                }
+            }
+            result.close();
+            return listTransaction;
+        } catch (SQLException sqle) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
+            return null;
+        }
     }
     
 }

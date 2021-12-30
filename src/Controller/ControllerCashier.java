@@ -5,19 +5,19 @@
  */
 package Controller;
 
-import Model.ModelFilm;
-import Model.ModelSchedule;
-import Model.ModelStaff;
-import Model.ModelTransaction;
-import View.CashierDashboard;
-import View.chooseSeat;
+import Model.*;
+import View.*;
 import dbhelper.DAOAdmin;
 import dbhelper.DAOKasir;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
 
 /**
  *
@@ -26,32 +26,48 @@ import javax.swing.DefaultListModel;
 public class ControllerCashier {
     private List<ModelFilm> listFilm;
     private List<ModelSchedule> listSchedule;
+    private String[] listSeatAll;
     private ModelStaff staff;
-    private ModelTransaction transaction;
+    private ModelFilm filmSel;
+    private ModelSchedule scheduleSel;
+    private ModelTransaction transaction;    
     private CashierDashboard frmCashierDashboard;
     private chooseSeat frmChooseSeat;
+    private confirmTransaction frmConfirmTransaction;
+    private SuccessTransaction frmSuccessTransaction;    
     private DAOKasir daokasir;
     private DAOAdmin daoadmin;
+    private ControllerLogin cLogin;
     
     public ControllerCashier(ModelStaff staff) {
-        this.staff = staff;
+        this.staff = staff;        
         transaction = new ModelTransaction();
-        frmCashierDashboard = new CashierDashboard();        
-        this.frmCashierDashboard.mouseAdapter(new MousePressed());        
+        frmCashierDashboard = new CashierDashboard();             
+        this.frmCashierDashboard.mouseAdapter(new MousePressed());   
+        this.frmCashierDashboard.actionListener(new ButtonListener());
         this.frmCashierDashboard.getButtonChoose().setEnabled(false);
         
         frmChooseSeat = new chooseSeat();
+        this.frmChooseSeat.actionListener(new ButtonListener());
+        
+        frmConfirmTransaction = new confirmTransaction();
+        this.frmConfirmTransaction.actionListener(new ButtonListener());
+        
+        frmSuccessTransaction = new SuccessTransaction();
+        this.frmSuccessTransaction.actionListener(new ButtonListener());
+        
         daokasir = new DAOKasir();
         daoadmin = new DAOAdmin();        
         this.frmCashierDashboard.setVisible(true);
+        this.frmCashierDashboard.setTitle(staff.getName());
         loadListMovieShowing();        
     }
     
     public final void loadListMovieShowing(){
         Date utilDate = new Date();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        System.out.println(sqlDate);
-        listFilm = daokasir.getNowShowing(sqlDate);
+        java.sql.Date dateNow = new java.sql.Date(utilDate.getTime());
+        transaction.setDate_buy(dateNow);
+        listFilm = daokasir.getNowShowing(dateNow);
         DefaultListModel dataList = new DefaultListModel();
         listFilm.forEach((p) -> {
             System.out.println(p.getTitle());
@@ -60,7 +76,7 @@ public class ControllerCashier {
         
         this.frmCashierDashboard.getListFilm().setModel(dataList);   
     }
-    
+        
     public final void loadListSchedule(int idFilm){                
         listSchedule = daoadmin.getAllSchedule(idFilm);
         DefaultListModel dataList = new DefaultListModel();
@@ -71,6 +87,104 @@ public class ControllerCashier {
         
         this.frmCashierDashboard.getListSchedule().setModel(dataList);   
     }
+
+    public final void loadListSeat(){   
+        List<String> listSeat = new ArrayList<>();        
+        List<String> listSeatNew = new ArrayList<>();        
+        listSeat = daokasir.getSeatAvailable(scheduleSel.getId_schedule(), transaction.getDate_buy());
+        
+        DefaultListModel dataList = new DefaultListModel();
+        listSeat.forEach((p) -> {
+            System.out.println(p);   
+            String[] arr = p.split("\\,", -1);
+            for (String arr1 : arr) {
+                System.out.println(arr1);
+                listSeatNew.add(arr1);
+            }
+        });
+        
+        listSeatNew.forEach((p) -> {
+            dataList.addElement(p);
+        });
+        this.frmChooseSeat.getListNotAvSeat().setModel(dataList);                
+    }   
+    
+    public final void loadConfirmTransaction(){        
+        frmConfirmTransaction.setConfirm(filmSel.getTitle(), transaction.getDate_buy(), scheduleSel.getTime(), scheduleSel.getTheater(), transaction.getTotal_price());
+    }
+    
+    public final void loadSuccessTransaction(){        
+        frmSuccessTransaction.setTiket(
+                1, 
+                filmSel.getTitle(), 
+                transaction.getDate_buy(), 
+                scheduleSel.getTime(), 
+                scheduleSel.getTheater(), 
+                transaction.getSeat(), 
+                scheduleSel.getPrice(), 
+                transaction.getTotal_price()
+        );
+    }
+    public final void insertDataTransaction(){        
+        transaction.setSeat(frmChooseSeat.getSeat());
+        String[] arr = frmChooseSeat.getSeat().split("\\,", -1);
+        int totalPrice = scheduleSel.getPrice() * arr.length;
+        transaction.setTotal_price(totalPrice);
+    }
+    
+    public final void insertTransaction(){        
+        daokasir.insertTransaction(transaction);   
+        frmCashierDashboard.getListSchedule().clearSelection();
+        frmCashierDashboard.getListFilm().clearSelection();
+    }
+    
+    public final void goToHomePage(){        
+        frmCashierDashboard.setVisible(true);
+        DefaultListModel dataList = new DefaultListModel();
+        frmCashierDashboard.getListFilm().clearSelection();
+        frmCashierDashboard.getListSchedule().setModel(dataList);
+    }
+    
+    public final void logout(){        
+        new ControllerLogin();
+        frmCashierDashboard.dispose();
+    }
+    
+    public class ButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Object source = e.getSource();
+            if (source.equals(frmCashierDashboard.getButtonChoose())) {
+                int selected = frmCashierDashboard.getListSchedule().getSelectedIndex();
+                scheduleSel = listSchedule.get(selected);
+                transaction.setSchedule_id(scheduleSel.getId_schedule());
+                loadListSeat();
+                frmChooseSeat.setTitle(staff.getName());
+                frmCashierDashboard.setVisible(false);
+                frmChooseSeat.setVisible(true);
+            } else if (source.equals(frmChooseSeat.getButtonChoose())) {
+                insertDataTransaction();
+                loadConfirmTransaction();
+                frmConfirmTransaction.setVisible(true);                
+                frmChooseSeat.setVisible(false);
+            } else if (source.equals(frmConfirmTransaction.getButtonBuy())) {
+                loadSuccessTransaction();
+                insertTransaction();
+                frmSuccessTransaction.setVisible(true);                
+                frmConfirmTransaction.setVisible(false);
+            } else if (source.equals(frmSuccessTransaction.getButtonCetak())) {
+                frmSuccessTransaction.displayPopup("Success Mencetak");
+            } else if (source.equals(frmSuccessTransaction.getButtonHome())) {
+                frmSuccessTransaction.setVisible(false);                
+                goToHomePage();
+            } else if (source.equals(frmConfirmTransaction.getButtonCancel())) {
+                frmConfirmTransaction.setVisible(false);    
+                goToHomePage();                
+            } else if (source.equals(frmCashierDashboard.getButtonLogOut())) {                
+                logout();
+            }
+        }
+    }
     
     public class MousePressed extends MouseAdapter {
         @Override
@@ -79,15 +193,11 @@ public class ControllerCashier {
             Object source = me.getSource();
             if (source.equals(frmCashierDashboard.getListFilm())) {
                 int i = frmCashierDashboard.getListFilm().getSelectedIndex();
-                ModelFilm filmSel = listFilm.get(i);  
-                System.out.println("aaaaa");
+                filmSel = listFilm.get(i);  
+                
                 loadListSchedule(filmSel.getId_film());
-            } else if (source.equals(frmCashierDashboard.getListSchedule())) {
-                int selected = frmCashierDashboard.getListSchedule().getSelectedIndex();
-                ModelSchedule scheduleSel = listSchedule.get(selected);  
-                System.out.println("schedule"); 
-                transaction.setSchedule_id(scheduleSel.getId_schedule());
-                frmChooseSeat.setVisible(true);
+            } else if (source.equals(frmCashierDashboard.getListSchedule())) {                
+                frmCashierDashboard.getButtonChoose().setEnabled(true);
             }
         } 
     }
