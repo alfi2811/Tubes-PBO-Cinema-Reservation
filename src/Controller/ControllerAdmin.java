@@ -101,8 +101,7 @@ public class ControllerAdmin {
         tbl.setRowCount(0);        
         list = daoadmin.getAllFilm();
         
-        list.forEach((data) -> {
-            System.out.println(data.getTitle());
+        list.forEach((data) -> {            
             tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_film(), data.getTitle(), data.getGenre(), data.getDate_start(), data.getDate_end()});
         });
     }
@@ -113,8 +112,7 @@ public class ControllerAdmin {
         tbl.setRowCount(0);        
         listStaff = daostaff.getAllStaff();
         
-        listStaff.forEach((data) -> {
-            System.out.println(data.getName());
+        listStaff.forEach((data) -> {            
             tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_staff(), data.getName(), data.getUsername(), data.getPhone(), data.getRole()});
         });
     }
@@ -125,27 +123,23 @@ public class ControllerAdmin {
         tbl.setRowCount(0);        
         listTransaction = daoadmin.getAllTransaction();
         
-        listTransaction.forEach((data) -> {
-            System.out.println(data.getSeat());
+        listTransaction.forEach((data) -> {            
             tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_transaction(), data.getSchedule_id(), data.getSeat(), data.getTotal_price(), data.getDate_buy()});
         });
     }
     
     public final void loadListSchedule(){
         DefaultTableModel tblSchedule = (DefaultTableModel) frmAdminDashboard.getTabelSchedule().getModel();
-        int i = frmAdminDashboard.getTabelFilm().getSelectedRow();
-        System.out.println("anj: "+ i);
+        int i = frmAdminDashboard.getTabelFilm().getSelectedRow();        
         tblSchedule.setRowCount(0);
-        if(i > -1) {
-            System.out.println("i: " + i);
+        if(i > -1) {            
             ModelFilm filmSelected = list.get(i);            
 
             listSchedule = daoadmin.getAllSchedule(filmSelected.getId_film());            
         } else {
             listSchedule = daoadmin.getAllSchedule(0);
         }
-        listSchedule.forEach((data) -> {
-            System.out.println(data.getPrice());
+        listSchedule.forEach((data) -> {            
             tblSchedule.insertRow(tblSchedule.getRowCount(), 
                     new Object[]{data.getId_schedule(), data.getFilm_id(), data.getTheater(), data.getTime(), data.getPrice()});
         });           
@@ -159,7 +153,7 @@ public class ControllerAdmin {
         Date get_date_end = new Date(frmAddFilm.getDateEnd().getTime());        
         filmNew.setDate_start(get_date_start);
         filmNew.setDate_end(get_date_end);
-        System.out.println(filmNew.getTitle());
+        
         daoadmin.insertFilm(filmNew);
         loadList();
         frmAddFilm.setVisible(false);
@@ -172,7 +166,7 @@ public class ControllerAdmin {
         scheduleNew.setTheater(frmAddSchedule.getTheater());
         scheduleNew.setPrice(frmAddSchedule.getPrice());
         scheduleNew.setTime(frmAddSchedule.getTime());
-        System.out.println(scheduleNew.getFilm_id());
+        
         daoadmin.insertSchedule(scheduleNew);
         loadListSchedule();
         frmAddSchedule.setVisible(false);
@@ -185,8 +179,7 @@ public class ControllerAdmin {
         staffNew.setUsername(frmAddStaff.getUsername());
         staffNew.setPassword(frmAddStaff.getPassword());
         staffNew.setPhone(frmAddStaff.getPhone());
-        staffNew.setRole(frmAddStaff.getRole());
-        System.out.println(staffNew.getPhone());
+        staffNew.setRole(frmAddStaff.getRole());        
         
         daostaff.insertStaff(staffNew);
         loadListStaff();
@@ -204,8 +197,7 @@ public class ControllerAdmin {
         Date get_date_end = new Date(frmEditFilm.getDateEnd().getTime());        
         filmNew.setDate_start(get_date_start);
         filmNew.setDate_end(get_date_end);
-        
-        System.out.println(filmNew.getTitle());
+                
         daoadmin.updateFilm(filmNew);
         loadList();
         frmEditFilm.setVisible(false);
@@ -218,8 +210,7 @@ public class ControllerAdmin {
         scheduleNew.setTheater(frmEditSchedule.getTheater());
         scheduleNew.setPrice(frmEditSchedule.getPrice());
         scheduleNew.setTime(frmEditSchedule.getTime());
-        
-        System.out.println(scheduleNew.getPrice());
+                
         daoadmin.updateSchedule(scheduleNew);
         loadListSchedule();
         frmEditSchedule.setVisible(false);
@@ -234,8 +225,7 @@ public class ControllerAdmin {
         staffEdit.setPassword(frmEditStaff.getPassword());
         staffEdit.setPhone(frmEditStaff.getPhone());
         staffEdit.setRole(frmEditStaff.getRole());
-        
-        System.out.println(staffEdit.getUsername());
+                
         daostaff.updateStaff(staffEdit);
         loadListStaff();
         frmEditStaff.setVisible(false);
@@ -316,12 +306,10 @@ public class ControllerAdmin {
                 }
             } else if (source.equals(frmAdminDashboard.getButtonEdit())) {
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();
-                int j = frmAdminDashboard.getTabelSchedule().getSelectedRow();
-                System.out.println("i: " + i);
+                int j = frmAdminDashboard.getTabelSchedule().getSelectedRow();                
                 int tabIdx = frmAdminDashboard.getTabAdmin().getSelectedIndex();
                 if (tabIdx == 1 && j > -1) {
-                    ModelSchedule scheduleSelected = listSchedule.get(j);
-                    System.out.println("selected scheduled: " + scheduleSelected.getPrice());
+                    ModelSchedule scheduleSelected = listSchedule.get(j);                    
                     frmEditSchedule.setTitle(staff.getName());
                     frmEditSchedule.setDataSchedule(
                             scheduleSelected.getId_schedule(),
@@ -335,7 +323,7 @@ public class ControllerAdmin {
                 } else if (tabIdx == 2) {
                     int idx = frmAdminDashboard.getTabelStaff().getSelectedRow();
                     ModelStaff staffSelected = listStaff.get(idx);
-                    System.out.println("selected: " + staffSelected.getName());
+                    
                     frmEditStaff.setTitle(staff.getName());
                     frmEditStaff.setDataStaff(
                             staffSelected.getId_staff(),
@@ -349,7 +337,7 @@ public class ControllerAdmin {
                     frmAdminDashboard.setVisible(false);
                 } else {
                     ModelFilm filmSelected = list.get(i);
-                    System.out.println("selected: " + filmSelected.getTitle());
+                    
                     frmEditFilm.setTitle(staff.getName());
                     frmEditFilm.setDataFilm(
                             filmSelected.getId_film(), 
@@ -383,7 +371,7 @@ public class ControllerAdmin {
             } else if (source.equals(frmAdminDashboard.getButtonDelete())) {                
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();
                 int j = frmAdminDashboard.getTabelSchedule().getSelectedRow();
-                System.out.println("i: " + i);
+                
                 int tabIdx = frmAdminDashboard.getTabAdmin().getSelectedIndex();
                 if (tabIdx == 1 && j > -1) {
                     ModelSchedule scheduleSelected = listSchedule.get(j);
@@ -396,8 +384,7 @@ public class ControllerAdmin {
                     frmDeleteStaff.setConfirm(staffSelected.getId_staff(), staffSelected.getName(), staffSelected.getRole());
                     frmDeleteStaff.setVisible(true);
                     frmAdminDashboard.setVisible(false);
-                } else {
-                    System.out.println("i: " + i);
+                } else {                    
                     ModelFilm filmSelected = list.get(i);
                     frmDeleteFilm.setConfirm(filmSelected.getId_film(), filmSelected.getTitle());
                     frmDeleteFilm.setVisible(true);
@@ -431,15 +418,14 @@ public class ControllerAdmin {
         public void mousePressed(MouseEvent me) {
             // compiled code
             Object source = me.getSource();
-            if (source.equals(frmAdminDashboard.getTabelFilm()) || source.equals(frmAdminDashboard.getTabelStaff())) {
-                System.out.println("aaaaa");
+            if (source.equals(frmAdminDashboard.getTabelFilm()) || source.equals(frmAdminDashboard.getTabelStaff())) {                
                 frmAdminDashboard.getButtonEdit().setEnabled(true);
                 frmAdminDashboard.getButtonDelete().setEnabled(true);
                 loadListSchedule();                
             } else if (source.equals(frmAdminDashboard.getTabAdmin())) {                              
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();                
                 int tabIdx = frmAdminDashboard.getTabAdmin().getSelectedIndex();                    
-                System.out.println("anjay masuk " + i+ tabIdx);
+                
                 if(tabIdx == 1 && i < 0 || tabIdx == 3) {
                     frmAdminDashboard.getButtonAdd().setEnabled(false);        
                     frmAdminDashboard.getButtonEdit().setEnabled(false);        

@@ -34,7 +34,6 @@ public class chooseSeat extends javax.swing.JFrame {
     private void initComponents() {
 
         title = new javax.swing.JLabel();
-        buttonRefresh = new javax.swing.JButton();
         buttonLogOut = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listSeat = new javax.swing.JList<>();
@@ -45,14 +44,12 @@ public class chooseSeat extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         listNotAvailableSeat = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         title.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         title.setText("Hi");
-
-        buttonRefresh.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        buttonRefresh.setText("Refresh");
 
         buttonLogOut.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         buttonLogOut.setText("Logout");
@@ -80,6 +77,8 @@ public class chooseSeat extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Not Available Seat");
 
+        buttonCancel.setText("Cancel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,16 +100,17 @@ public class chooseSeat extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(seatField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(buttonChoose)
-                                    .addComponent(instrcution2))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(100, 100, 100)
+                                .addComponent(instrcution2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(buttonChoose)
+                                .addGap(27, 27, 27)
+                                .addComponent(buttonCancel)))
+                        .addContainerGap(101, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(title)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
-                        .addComponent(buttonRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonLogOut)
                         .addGap(80, 80, 80))))
         );
@@ -129,9 +129,7 @@ public class chooseSeat extends javax.swing.JFrame {
                             .addComponent(title)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(buttonRefresh)
-                                    .addComponent(buttonLogOut))))
+                                .addComponent(buttonLogOut)))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -141,8 +139,10 @@ public class chooseSeat extends javax.swing.JFrame {
                                 .addComponent(seatField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(instrcution2)
-                                .addGap(27, 27, 27)
-                                .addComponent(buttonChoose))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(buttonChoose)
+                                    .addComponent(buttonCancel)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
@@ -186,9 +186,9 @@ public class chooseSeat extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonChoose;
     private javax.swing.JButton buttonLogOut;
-    private javax.swing.JButton buttonRefresh;
     private javax.swing.JLabel instrcution2;
     private javax.swing.JLabel instruction1;
     private javax.swing.JLabel jLabel1;
@@ -203,17 +203,17 @@ public class chooseSeat extends javax.swing.JFrame {
     public String getSeat(){return seatField.getText();}
     
     public JButton getButtonChoose() {return buttonChoose;}
+    public JButton getButtonCancel() {return buttonCancel;}
     public JButton getButtonLogOut() {return buttonLogOut;}
-    public JButton getButtonRefresh() {return buttonRefresh;}
     public JTextField getSeatField() {return seatField;}   
     public JList getListSeat(){ return this.listSeat; }
     public JList getListNotAvSeat(){ return this.listNotAvailableSeat; }
     public void setTitle(String title){ this.title.setText("Hi, " + title); }
 
-    public void actionListener(ActionListener listen){
-        this.buttonRefresh.addActionListener(listen);
+    public void actionListener(ActionListener listen){        
         this.buttonLogOut.addActionListener(listen);
         this.buttonChoose.addActionListener(listen);
+        this.buttonCancel.addActionListener(listen);
     }
     
     public void displayError(){
