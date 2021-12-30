@@ -34,7 +34,6 @@ public class confirmTransaction extends javax.swing.JFrame {
     private void initComponents() {
 
         title = new javax.swing.JLabel();
-        idTrans = new javax.swing.JLabel();
         filmName = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         theater = new javax.swing.JLabel();
@@ -47,13 +46,17 @@ public class confirmTransaction extends javax.swing.JFrame {
         showTime = new javax.swing.JLabel();
         showTheater = new javax.swing.JLabel();
         showPrice = new javax.swing.JLabel();
+        nameFilm = new javax.swing.JLabel();
+        dateSchedule = new javax.swing.JLabel();
+        timeSchedule = new javax.swing.JLabel();
+        theaterSchedule = new javax.swing.JLabel();
+        totalPrice = new javax.swing.JLabel();
+        buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         title.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         title.setText("Transaction Confirmation");
-
-        idTrans.setText("ID Transaction: ");
 
         filmName.setText("Film:");
 
@@ -67,6 +70,18 @@ public class confirmTransaction extends javax.swing.JFrame {
 
         buttonBuy.setText("Buy");
 
+        nameFilm.setText("jLabel1");
+
+        dateSchedule.setText("jLabel1");
+
+        timeSchedule.setText("jLabel1");
+
+        theaterSchedule.setText("jLabel1");
+
+        totalPrice.setText("jLabel1");
+
+        buttonCancel.setText("Cancel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,23 +94,40 @@ public class confirmTransaction extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idTrans)
                             .addComponent(filmName)
                             .addComponent(date)
                             .addComponent(time)
                             .addComponent(theater)
                             .addComponent(price))
-                        .addGap(18, 18, 18)
+                        .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(showPrice)
-                            .addComponent(showTheater)
-                            .addComponent(showTime)
-                            .addComponent(showDate)
-                            .addComponent(showName)
-                            .addComponent(showIDTrans)))
+                            .addComponent(showIDTrans)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(showPrice)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(totalPrice))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(showTheater)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(theaterSchedule))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(showTime)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(timeSchedule))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(showName)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nameFilm))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(showDate)
+                                    .addGap(35, 35, 35)
+                                    .addComponent(dateSchedule)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
-                        .addComponent(buttonBuy)))
+                        .addGap(230, 230, 230)
+                        .addComponent(buttonBuy)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCancel)))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,32 +136,37 @@ public class confirmTransaction extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(title)
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idTrans)
-                    .addComponent(showIDTrans))
+                .addComponent(showIDTrans)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(filmName)
-                    .addComponent(showName))
+                    .addComponent(showName)
+                    .addComponent(nameFilm))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(date)
-                    .addComponent(showDate))
+                    .addComponent(showDate)
+                    .addComponent(dateSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(time)
-                    .addComponent(showTime))
+                    .addComponent(showTime)
+                    .addComponent(timeSchedule))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(theater)
-                    .addComponent(showTheater))
+                    .addComponent(showTheater)
+                    .addComponent(theaterSchedule))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(price)
-                    .addComponent(showPrice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(buttonBuy)
-                .addGap(44, 44, 44))
+                    .addComponent(showPrice)
+                    .addComponent(totalPrice))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonBuy)
+                    .addComponent(buttonCancel))
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -172,9 +209,11 @@ public class confirmTransaction extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBuy;
+    private javax.swing.JButton buttonCancel;
     private javax.swing.JLabel date;
+    private javax.swing.JLabel dateSchedule;
     private javax.swing.JLabel filmName;
-    private javax.swing.JLabel idTrans;
+    private javax.swing.JLabel nameFilm;
     private javax.swing.JLabel price;
     private javax.swing.JLabel showDate;
     private javax.swing.JLabel showIDTrans;
@@ -183,27 +222,29 @@ public class confirmTransaction extends javax.swing.JFrame {
     private javax.swing.JLabel showTheater;
     private javax.swing.JLabel showTime;
     private javax.swing.JLabel theater;
+    private javax.swing.JLabel theaterSchedule;
     private javax.swing.JLabel time;
+    private javax.swing.JLabel timeSchedule;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel totalPrice;
     // End of variables declaration//GEN-END:variables
 
-    public void setConfirm(int id, String name, Date dateBuy, String time, int theater, int price){
+    public void setConfirm(String filmName, Date dateBuy, String time, int theater, int price){
         DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         String dateStr = date.format(dateBuy);
         
-        this.showIDTrans.setText(Integer.toString(id));
-        this.showName.setText(name);
-        this.showDate.setText(dateStr);
-        this.showTime.setText(time);
-        this.showTheater.setText(Integer.toString(theater));
-        this.showPrice.setText(Integer.toString(price));
-    }
-
-    public int getID(){return Integer.parseInt(showIDTrans.getText());}
+        this.nameFilm.setText(filmName);
+        this.dateSchedule.setText(dateStr);
+        this.timeSchedule.setText(time);
+        this.theaterSchedule.setText(Integer.toString(theater));
+        this.totalPrice.setText(Integer.toString(price));
+    }    
 
     public JButton getButtonBuy() {return buttonBuy;}
+    public JButton getButtonCancel() {return buttonCancel;}
     public void actionListener(ActionListener listen){
         this.buttonBuy.addActionListener(listen);
+        this.buttonCancel.addActionListener(listen);
     }
 
     

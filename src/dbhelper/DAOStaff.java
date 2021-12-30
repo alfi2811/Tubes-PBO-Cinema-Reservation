@@ -74,7 +74,8 @@ public class DAOStaff {
             return staff;
         } catch (SQLException sqle) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, sqle);
-            return null;
+            System.out.println(sqle);
+            return staff;
         }
     }
     

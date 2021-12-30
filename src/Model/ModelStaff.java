@@ -8,7 +8,9 @@ public class ModelStaff {
     private String phone;
     private String role;
 
-    public ModelStaff() {}
+    public ModelStaff() {        
+        this.role = "";
+    }
 
     public ModelStaff(int id_staff, String name, String username, String password, String phone, String role) {
         this.id_staff = id_staff;

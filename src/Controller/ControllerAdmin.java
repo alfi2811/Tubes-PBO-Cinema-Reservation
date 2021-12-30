@@ -6,9 +6,7 @@
 package Controller;
 
 import java.util.List;
-import Model.ModelFilm;
-import Model.ModelSchedule;
-import Model.ModelStaff;
+import Model.*;
 import View.AdminDashboard;
 import View.addFilm;
 import View.addSchedule;
@@ -38,6 +36,7 @@ public class ControllerAdmin {
     private List<ModelFilm> list;
     private List<ModelSchedule> listSchedule;
     private List<ModelStaff> listStaff;
+    private List<ModelTransaction> listTransaction;
     
     private ModelStaff staff;
     private ModelFilm film;
@@ -56,7 +55,7 @@ public class ControllerAdmin {
     private deleteStaff frmDeleteStaff;   
     
     private DAOAdmin daoadmin;
-    private DAOStaff daostaff;
+    private DAOStaff daostaff;    
     
     public ControllerAdmin(ModelStaff staff) {        
         this.staff = staff;        
@@ -94,6 +93,7 @@ public class ControllerAdmin {
         this.frmAdminDashboard.setTitle(staff.getName());
         loadList();  
         loadListStaff();
+        loadListTransaction();
     }
     public final void loadList(){
         DefaultTableModel tbl = (DefaultTableModel) frmAdminDashboard.getTabelFilm().getModel();        
@@ -116,6 +116,18 @@ public class ControllerAdmin {
         listStaff.forEach((data) -> {
             System.out.println(data.getName());
             tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_staff(), data.getName(), data.getUsername(), data.getPhone(), data.getRole()});
+        });
+    }
+    
+    public final void loadListTransaction(){
+        DefaultTableModel tbl = (DefaultTableModel) frmAdminDashboard.getTabelTransaction().getModel();        
+        
+        tbl.setRowCount(0);        
+        listTransaction = daoadmin.getAllTransaction();
+        
+        listTransaction.forEach((data) -> {
+            System.out.println(data.getSeat());
+            tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_transaction(), data.getSchedule_id(), data.getSeat(), data.getTotal_price(), data.getDate_buy()});
         });
     }
     
@@ -254,6 +266,11 @@ public class ControllerAdmin {
         frmAdminDashboard.setVisible(true);
     }
     
+    public final void logout(){        
+        new ControllerLogin();
+        frmAdminDashboard.dispose();
+    }
+    
     public class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -275,6 +292,10 @@ public class ControllerAdmin {
                 loadList();
                 frmAdminDashboard.getTabelFilm().clearSelection();
                 loadListSchedule();
+                loadListStaff();
+                loadListTransaction();
+            } else if (source.equals(frmAdminDashboard.getButtonLogOut())) {
+                logout();                
             } else if (source.equals(frmAddFilm.getAddButton())) {
                 try {
                     insertFilm();
@@ -419,7 +440,7 @@ public class ControllerAdmin {
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();                
                 int tabIdx = frmAdminDashboard.getTabAdmin().getSelectedIndex();                    
                 System.out.println("anjay masuk " + i+ tabIdx);
-                if(tabIdx == 1 && i < 0) {
+                if(tabIdx == 1 && i < 0 || tabIdx == 3) {
                     frmAdminDashboard.getButtonAdd().setEnabled(false);        
                     frmAdminDashboard.getButtonEdit().setEnabled(false);        
                     frmAdminDashboard.getButtonDelete().setEnabled(false);        
