@@ -52,12 +52,10 @@ public class DAOStaff {
     public ModelStaff getStaff(String username, String password) {
         listStaff = new ArrayList<>();
         ModelStaff staff  = new ModelStaff();
-        
-        System.out.println(username + password);
+                
         try {
             ResultSet result;
-            try (Statement statement = DBConnect.getConnection().createStatement()) {
-                System.out.println("ajndjansd");
+            try (Statement statement = DBConnect.getConnection().createStatement()) {                
                 result = statement.executeQuery("SELECT * FROM staff where username = '"+username+"' and password = '"+ password + "'");
                 while (result.next()) {                    
                     staff.setId_staff(result.getInt(1));

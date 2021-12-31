@@ -8,15 +8,15 @@ package Controller;
 import java.util.List;
 import Model.*;
 import View.AdminDashboard;
-import View.addFilm;
-import View.addSchedule;
-import View.addStaff;
-import View.deleteFilm;
-import View.editFilm;
-import View.editStaff;
-import View.editSchedule;
-import View.deleteSchedule;
-import View.deleteStaff;
+import View.AddFilm;
+import View.AddSchedule;
+import View.AddStaff;
+import View.DeleteFilm;
+import View.EditFilm;
+import View.EditStaff;
+import View.EditSchedule;
+import View.DeleteSchedule;
+import View.DeleteStaff;
 import dbhelper.DAOAdmin;
 import dbhelper.DAOStaff;
 import java.awt.event.ActionEvent;
@@ -42,17 +42,17 @@ public class ControllerAdmin {
     private ModelFilm film;
     
     private AdminDashboard frmAdminDashboard;
-    private addFilm frmAddFilm;
-    private editFilm frmEditFilm;
-    private deleteFilm frmDeleteFilm;
+    private AddFilm frmAddFilm;
+    private EditFilm frmEditFilm;
+    private DeleteFilm frmDeleteFilm;
     
-    private addSchedule frmAddSchedule;   
-    private editSchedule frmEditSchedule;
-    private deleteSchedule frmDeleteSchedule;
+    private AddSchedule frmAddSchedule;   
+    private EditSchedule frmEditSchedule;
+    private DeleteSchedule frmDeleteSchedule;
     
-    private addStaff frmAddStaff;   
-    private editStaff frmEditStaff;   
-    private deleteStaff frmDeleteStaff;   
+    private AddStaff frmAddStaff;   
+    private EditStaff frmEditStaff;   
+    private DeleteStaff frmDeleteStaff;   
     
     private DAOAdmin daoadmin;
     private DAOStaff daostaff;    
@@ -66,25 +66,25 @@ public class ControllerAdmin {
         this.frmAdminDashboard.actionListener(new ControllerAdmin.ButtonListener());
         this.frmAdminDashboard.mouseAdapter(new MousePressed());
         
-        frmAddFilm = new addFilm();        
+        frmAddFilm = new AddFilm();        
         this.frmAddFilm.actionListener(new ControllerAdmin.ButtonListener());
-        frmEditFilm = new editFilm();  
+        frmEditFilm = new EditFilm();  
         this.frmEditFilm.actionListener(new ControllerAdmin.ButtonListener());        
-        frmDeleteFilm = new deleteFilm(); 
+        frmDeleteFilm = new DeleteFilm(); 
         this.frmDeleteFilm.actionListener(new ControllerAdmin.ButtonListener());
         
-        frmAddSchedule = new addSchedule();
+        frmAddSchedule = new AddSchedule();
         this.frmAddSchedule.actionListener(new ControllerAdmin.ButtonListener());        
-        frmEditSchedule = new editSchedule();
+        frmEditSchedule = new EditSchedule();
         this.frmEditSchedule.actionListener(new ControllerAdmin.ButtonListener());
-        frmDeleteSchedule = new deleteSchedule();
+        frmDeleteSchedule = new DeleteSchedule();
         this.frmDeleteSchedule.actionListener(new ControllerAdmin.ButtonListener());
         
-        frmAddStaff = new addStaff();
+        frmAddStaff = new AddStaff();
         this.frmAddStaff.actionListener(new ControllerAdmin.ButtonListener());
-        frmEditStaff = new editStaff();
+        frmEditStaff = new EditStaff();
         this.frmEditStaff.actionListener(new ControllerAdmin.ButtonListener());
-        frmDeleteStaff = new deleteStaff();
+        frmDeleteStaff = new DeleteStaff();
         this.frmDeleteStaff.actionListener(new ControllerAdmin.ButtonListener());
         
         daoadmin = new DAOAdmin();
@@ -271,7 +271,10 @@ public class ControllerAdmin {
                     frmAddFilm.setTitle(staff.getName());
                     frmAddFilm.setVisible(true);
                 } else if (tabIdx == 1) {
+                    int i = frmAdminDashboard.getTabelFilm().getSelectedRow();                
+                    ModelFilm filmSelected = list.get(i);         
                     frmAddSchedule.setTitle(staff.getName());
+                    frmAddSchedule.setIdFilm(filmSelected.getId_film());
                     frmAddSchedule.setVisible(true);                    
                 } else if (tabIdx == 2) {
                     frmAddStaff.setTitle(staff.getName());

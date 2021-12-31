@@ -32,7 +32,6 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="id" min="-2" max="-2" attributes="0"/>
                           <Component id="dateStart" min="-2" max="-2" attributes="0"/>
                           <Component id="titleFilm" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="genre" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -41,7 +40,6 @@
                       <EmptySpace pref="114" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="idField" max="32767" attributes="0"/>
                               <Component id="titleField" max="32767" attributes="0"/>
                               <Component id="dateStartField" alignment="0" max="32767" attributes="0"/>
                               <Component id="dateEndField" alignment="0" max="32767" attributes="0"/>
@@ -69,22 +67,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Component id="title" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="idField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="titleFilm" min="-2" max="-2" attributes="0"/>
-                  <Component id="titleField" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="titleField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="genre" min="-2" max="-2" attributes="0"/>
-                  <Component id="genreField" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="genreField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dateStart" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dateStartField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -96,12 +89,12 @@
                   <Component id="dateEndField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="66" max="32767" attributes="0"/>
+              <EmptySpace pref="106" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,11 +106,6 @@
           <Font name="Century Gothic" size="36" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Hi,"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="id">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dateStart">
@@ -141,11 +129,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="genreField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="idField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="titleField">
     </Component>

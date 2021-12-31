@@ -7,22 +7,22 @@ package View;
 
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
  *
  * @author DELL
  */
-public class addFilm extends javax.swing.JFrame {
+public class EditFilm extends javax.swing.JFrame {
 
     /**
-     * Creates new form addFilm
+     * Creates new form editFilm
      */
-    public addFilm() {
+    public EditFilm() {
         initComponents();
     }
 
@@ -36,29 +36,35 @@ public class addFilm extends javax.swing.JFrame {
     private void initComponents() {
 
         title = new javax.swing.JLabel();
+        editButton = new javax.swing.JButton();
         id = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         dateStart = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         titleFilm = new javax.swing.JLabel();
         genre = new javax.swing.JLabel();
         dateEnd = new javax.swing.JLabel();
         genreField = new javax.swing.JTextField();
-        idField = new javax.swing.JTextField();
         titleField = new javax.swing.JTextField();
         dateEndField = new javax.swing.JTextField();
         dateStartField = new javax.swing.JTextField();
-        addButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
+        idField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         title.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         title.setText("Hi,");
 
+        editButton.setText("Edit");
+
         id.setText("ID");
 
+        jLabel1.setText("\"yyyy-mm-dd\"");
+
         dateStart.setText("Date Start");
+
+        jLabel2.setText("\"yyyy-mm-dd\"");
 
         titleFilm.setText("Title");
 
@@ -66,24 +72,14 @@ public class addFilm extends javax.swing.JFrame {
 
         dateEnd.setText("Date End");
 
-        idField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idFieldActionPerformed(evt);
-            }
-        });
-
-        addButton.setText("Add");
-
-        jLabel1.setText("\"yyyy-mm-dd\"");
-
-        jLabel2.setText("\"yyyy-mm-dd\"");
-
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
             }
         });
+
+        idField.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,22 +98,23 @@ public class addFilm extends javax.swing.JFrame {
                             .addComponent(titleFilm)
                             .addComponent(genre)
                             .addComponent(dateEnd))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(idField)
-                                .addComponent(titleField)
-                                .addComponent(dateStartField)
-                                .addComponent(dateEndField)
-                                .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(addButton)
+                                .addComponent(editButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancelButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(titleField)
+                                    .addComponent(dateStartField)
+                                    .addComponent(dateEndField)
+                                    .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cancelButton)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)))
+                            .addComponent(idField))
                         .addGap(76, 76, 76))))
         );
         layout.setVerticalGroup(
@@ -125,10 +122,10 @@ public class addFilm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(title)
-                .addGap(37, 37, 37)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idField))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleFilm)
@@ -149,17 +146,13 @@ public class addFilm extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
+                    .addComponent(editButton)
                     .addComponent(cancelButton))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idFieldActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
@@ -182,35 +175,36 @@ public class addFilm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addFilm().setVisible(true);
+                new EditFilm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel dateEnd;
     private javax.swing.JTextField dateEndField;
     private javax.swing.JLabel dateStart;
     private javax.swing.JTextField dateStartField;
+    private javax.swing.JButton editButton;
     private javax.swing.JLabel genre;
     private javax.swing.JTextField genreField;
     private javax.swing.JLabel id;
-    private javax.swing.JTextField idField;
+    private javax.swing.JLabel idField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel title;
@@ -231,27 +225,32 @@ public class addFilm extends javax.swing.JFrame {
         Date endDate = end.parse(dateEndField.getText());
         return endDate;
     }
+    
     public void setTitle(String title) {
         this.title.setText("Hi, " + title);
     }
     
-    public JButton getAddButton() {return addButton;}
+    public void setDataFilm(int id, String title, String genre, String start_date, String end_date){
+        this.idField.setText(Integer.toString(id));
+        this.titleField.setText(title); 
+        this.genreField.setText(genre);
+        this.dateStartField.setText(start_date);
+        this.dateEndField.setText(end_date);        
+    };
+
+    public JButton getEditButton() {return editButton;}    
     public JButton getCancelButton() {return cancelButton;}
     public JTextField getDateEndField() {return dateEndField;}
     public JTextField getDateStartField() {return dateStartField;}
     public JTextField getGenreField() {return genreField; }
-    public JTextField getIdField() {return idField;}
+    public JLabel getIdField() {return idField;}
     public JTextField getTitleField() {return titleField;}
 
     public void actionListener(ActionListener listen){
-        this.addButton.addActionListener(listen);
+        this.editButton.addActionListener(listen);
         this.cancelButton.addActionListener(listen);
     }
     
-    public void displayError(){
-        JOptionPane.showMessageDialog(this, "Masih ada field yang kosong");
-    }
-
-
+    //kayanya yg add sama edit viewnya sama cuma bedanya kalo edit harus mencet dulu gitu film mana yg mau diedit sama gapapa kalo ada field yg kosong
 
 }
