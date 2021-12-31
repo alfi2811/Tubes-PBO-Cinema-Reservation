@@ -10,18 +10,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
  *
  * @author DELL
  */
-public class editFilm extends javax.swing.JFrame {
+public class EditSchedule extends javax.swing.JFrame {
 
     /**
-     * Creates new form editFilm
+     * Creates new form editSchedule
      */
-    public editFilm() {
+    public EditSchedule() {
         initComponents();
     }
 
@@ -34,48 +35,44 @@ public class editFilm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        price = new javax.swing.JLabel();
+        theaterField = new javax.swing.JTextField();
         title = new javax.swing.JLabel();
+        filmField = new javax.swing.JTextField();
         editButton = new javax.swing.JButton();
+        priceField = new javax.swing.JTextField();
         id = new javax.swing.JLabel();
+        timeField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        dateStart = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        time = new javax.swing.JLabel();
         titleFilm = new javax.swing.JLabel();
-        genre = new javax.swing.JLabel();
-        dateEnd = new javax.swing.JLabel();
-        genreField = new javax.swing.JTextField();
-        idField = new javax.swing.JTextField();
-        titleField = new javax.swing.JTextField();
-        dateEndField = new javax.swing.JTextField();
-        dateStartField = new javax.swing.JTextField();
+        theater = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
+        idField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        price.setText("Price");
 
         title.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         title.setText("Hi,");
 
         editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         id.setText("ID");
 
-        jLabel1.setText("\"yyyy-mm-dd\"");
+        jLabel1.setText("\"hh:mm\"");
 
-        dateStart.setText("Date Start");
+        time.setText("Time");
 
-        jLabel2.setText("\"yyyy-mm-dd\"");
+        titleFilm.setText("ID Film");
 
-        titleFilm.setText("Title");
-
-        genre.setText("Genre");
-
-        dateEnd.setText("Date End");
-
-        idField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idFieldActionPerformed(evt);
-            }
-        });
+        theater.setText("Theater");
 
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +80,8 @@ public class editFilm extends javax.swing.JFrame {
                 cancelButtonActionPerformed(evt);
             }
         });
+
+        idField.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,11 +96,11 @@ public class editFilm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(id)
-                            .addComponent(dateStart)
+                            .addComponent(time)
                             .addComponent(titleFilm)
-                            .addComponent(genre)
-                            .addComponent(dateEnd))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                            .addComponent(theater)
+                            .addComponent(price))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(editButton)
@@ -109,57 +108,54 @@ public class editFilm extends javax.swing.JFrame {
                                 .addComponent(cancelButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(idField)
-                                    .addComponent(titleField)
-                                    .addComponent(dateStartField)
-                                    .addComponent(dateEndField)
-                                    .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(filmField)
+                                    .addComponent(timeField)
+                                    .addComponent(priceField)
+                                    .addComponent(theaterField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))))
-                        .addGap(76, 76, 76))))
+                                .addComponent(jLabel1))
+                            .addComponent(idField))
+                        .addGap(110, 110, 110))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(title)
-                .addGap(37, 37, 37)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idField))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleFilm)
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(filmField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(genre)
-                    .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(theater)
+                    .addComponent(theaterField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateStart)
-                    .addComponent(dateStartField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(time)
+                    .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateEnd)
-                    .addComponent(dateEndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(price)
+                    .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton)
                     .addComponent(cancelButton))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idFieldActionPerformed
+    }//GEN-LAST:event_editButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
@@ -182,81 +178,78 @@ public class editFilm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(editFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(editFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(editFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(editFilm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new editFilm().setVisible(true);
+                new EditSchedule().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private javax.swing.JLabel dateEnd;
-    private javax.swing.JTextField dateEndField;
-    private javax.swing.JLabel dateStart;
-    private javax.swing.JTextField dateStartField;
     private javax.swing.JButton editButton;
-    private javax.swing.JLabel genre;
-    private javax.swing.JTextField genreField;
+    private javax.swing.JTextField filmField;
     private javax.swing.JLabel id;
-    private javax.swing.JTextField idField;
+    private javax.swing.JLabel idField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel price;
+    private javax.swing.JTextField priceField;
+    private javax.swing.JLabel theater;
+    private javax.swing.JTextField theaterField;
+    private javax.swing.JLabel time;
+    private javax.swing.JTextField timeField;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleFilm;
     // End of variables declaration//GEN-END:variables
 
     public int getID(){return Integer.parseInt(idField.getText());}
-    public String getTitle(){return titleField.getText();}
-    public String getGenre(){return genreField.getText();}
-    public Date getDateStart() throws ParseException{
-        SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");
-        Date startDate = start.parse(dateStartField.getText());
-        return startDate;
+    public int getFilm(){return Integer.parseInt(filmField.getText());}
+    public int getTheater(){return Integer.parseInt(theaterField.getText());}
+    public String getTime() throws ParseException{
+//        SimpleDateFormat timeStr = new SimpleDateFormat("HH:mm");
+//        Date timeDate = timeStr.parse(timeField.getText());
+        return timeField.getText();
     }
-    public Date getDateEnd() throws ParseException{
-        SimpleDateFormat end = new SimpleDateFormat("yyyy-MM-dd");
-        Date endDate = end.parse(dateEndField.getText());
-        return endDate;
-    }
+    public int getPrice() throws ParseException{return Integer.parseInt(priceField.getText());}
+
+    public JButton getEditButton() {return editButton;}
+    public JButton getCancelButton() {return cancelButton;}
+    
+    public JTextField getFilmField() {return filmField;}
+    public JLabel getIdField() {return idField;}
+    public JTextField getPriceField() {return priceField;}
+    public JTextField getTheaterField() {return theaterField;}
+    public JTextField getTimeField() {return timeField;}
     
     public void setTitle(String title) {
         this.title.setText("Hi, " + title);
     }
     
-    public void setDataFilm(int id, String title, String genre, String start_date, String end_date){
+    public void setDataSchedule(int id, int film_id, int price, int threater, String time){
         this.idField.setText(Integer.toString(id));
-        this.titleField.setText(title); 
-        this.genreField.setText(genre);
-        this.dateStartField.setText(start_date);
-        this.dateEndField.setText(end_date);        
+        this.filmField.setText(Integer.toString(film_id)); 
+        this.priceField.setText(Integer.toString(price));
+        this.theaterField.setText(Integer.toString(threater));
+        this.timeField.setText(time);
     };
-
-    public JButton getEditButton() {return editButton;}    
-    public JButton getCancelButton() {return cancelButton;}
-    public JTextField getDateEndField() {return dateEndField;}
-    public JTextField getDateStartField() {return dateStartField;}
-    public JTextField getGenreField() {return genreField; }
-    public JTextField getIdField() {return idField;}
-    public JTextField getTitleField() {return titleField;}
 
     public void actionListener(ActionListener listen){
         this.editButton.addActionListener(listen);
         this.cancelButton.addActionListener(listen);
     }
-    
+
     //kayanya yg add sama edit viewnya sama cuma bedanya kalo edit harus mencet dulu gitu film mana yg mau diedit sama gapapa kalo ada field yg kosong
 
 }

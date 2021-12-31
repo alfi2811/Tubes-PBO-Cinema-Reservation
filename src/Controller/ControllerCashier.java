@@ -25,15 +25,14 @@ import javax.swing.ListModel;
  */
 public class ControllerCashier {
     private List<ModelFilm> listFilm;
-    private List<ModelSchedule> listSchedule;
-    private String[] listSeatAll;
+    private List<ModelSchedule> listSchedule;    
     private ModelStaff staff;
     private ModelFilm filmSel;
     private ModelSchedule scheduleSel;
     private ModelTransaction transaction;    
     private CashierDashboard frmCashierDashboard;
-    private chooseSeat frmChooseSeat;
-    private confirmTransaction frmConfirmTransaction;
+    private ChooseSeat frmChooseSeat;
+    private ConfirmTransaction frmConfirmTransaction;
     private SuccessTransaction frmSuccessTransaction;    
     private DAOKasir daokasir;
     private DAOAdmin daoadmin;
@@ -47,10 +46,10 @@ public class ControllerCashier {
         this.frmCashierDashboard.actionListener(new ButtonListener());
         this.frmCashierDashboard.getButtonChoose().setEnabled(false);
         
-        frmChooseSeat = new chooseSeat();
+        frmChooseSeat = new ChooseSeat();
         this.frmChooseSeat.actionListener(new ButtonListener());
         
-        frmConfirmTransaction = new confirmTransaction();
+        frmConfirmTransaction = new ConfirmTransaction();
         this.frmConfirmTransaction.actionListener(new ButtonListener());
         
         frmSuccessTransaction = new SuccessTransaction();
@@ -106,7 +105,13 @@ public class ControllerCashier {
     }   
     
     public final void loadConfirmTransaction(){        
-        frmConfirmTransaction.setConfirm(filmSel.getTitle(), transaction.getDate_buy(), scheduleSel.getTime(), scheduleSel.getTheater(), transaction.getTotal_price());
+        frmConfirmTransaction.setConfirm(
+                filmSel.getTitle(), 
+                transaction.getDate_buy(), 
+                scheduleSel.getTime(), 
+                scheduleSel.getTheater(), 
+                transaction.getTotal_price()
+        );
     }
     
     public final void loadSuccessTransaction(){        

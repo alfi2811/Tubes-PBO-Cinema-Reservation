@@ -12,12 +12,12 @@ import javax.swing.JButton;
  *
  * @author DELL
  */
-public class deleteSchedule extends javax.swing.JFrame {
+public class DeleteStaff extends javax.swing.JFrame {
 
     /**
-     * Creates new form deleteFilm
+     * Creates new form deleteStaff
      */
-    public deleteSchedule() {
+    public DeleteStaff() {
         initComponents();
     }
 
@@ -34,15 +34,15 @@ public class deleteSchedule extends javax.swing.JFrame {
         buttonYes = new javax.swing.JButton();
         buttonNo = new javax.swing.JButton();
         showID = new javax.swing.JLabel();
-        showIDFilm = new javax.swing.JLabel();
-        showTheater = new javax.swing.JLabel();
-        idSchedule = new javax.swing.JLabel();
-        filmIdSchedule = new javax.swing.JLabel();
-        timeSchedule = new javax.swing.JLabel();
+        showName = new javax.swing.JLabel();
+        showRole = new javax.swing.JLabel();
+        idStaff = new javax.swing.JLabel();
+        nameStaff = new javax.swing.JLabel();
+        roleStaff = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        question.setText("Delete this schedule?");
+        question.setText("Delete this staff?");
 
         buttonYes.setText("Yes");
         buttonYes.addActionListener(new java.awt.event.ActionListener() {
@@ -55,66 +55,70 @@ public class deleteSchedule extends javax.swing.JFrame {
 
         showID.setText("ID: ");
 
-        showIDFilm.setText("ID Film:");
+        showName.setText("Name: ");
 
-        showTheater.setText("Time:");
+        showRole.setText("Role:");
 
-        idSchedule.setText("ww");
+        idStaff.setText("id");
 
-        filmIdSchedule.setText("jLabel1");
+        nameStaff.setText("name");
 
-        timeSchedule.setText("jLabel1");
+        roleStaff.setText("role");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(buttonYes)
-                        .addGap(112, 112, 112)
-                        .addComponent(buttonNo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(question)))
-                .addGap(0, 162, Short.MAX_VALUE))
+                .addGap(145, 145, 145)
+                .addComponent(buttonYes)
+                .addGap(112, 112, 112)
+                .addComponent(buttonNo)
+                .addGap(0, 157, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(showIDFilm)
-                    .addComponent(showID)
-                    .addComponent(showTheater))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeSchedule)
-                    .addComponent(idSchedule)
-                    .addComponent(filmIdSchedule))
-                .addContainerGap(252, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(showRole)
+                                .addGap(27, 27, 27)
+                                .addComponent(roleStaff))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(showName)
+                                    .addComponent(showID))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nameStaff)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(question)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(58, 58, 58)
                 .addComponent(question)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(showID)
-                    .addComponent(idSchedule))
+                    .addComponent(idStaff))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(showIDFilm)
-                    .addComponent(filmIdSchedule))
+                    .addComponent(showName)
+                    .addComponent(nameStaff))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(showTheater)
-                    .addComponent(timeSchedule))
+                    .addComponent(showRole)
+                    .addComponent(roleStaff))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonYes)
                     .addComponent(buttonNo))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,23 +145,21 @@ public class deleteSchedule extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(deleteSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(deleteSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(deleteSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(deleteSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new deleteSchedule().setVisible(true);
+                new DeleteStaff().setVisible(true);
             }
         });
     }
@@ -165,24 +167,26 @@ public class deleteSchedule extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonNo;
     private javax.swing.JButton buttonYes;
-    private javax.swing.JLabel filmIdSchedule;
-    private javax.swing.JLabel idSchedule;
+    private javax.swing.JLabel idStaff;
+    private javax.swing.JLabel nameStaff;
     private javax.swing.JLabel question;
+    private javax.swing.JLabel roleStaff;
     private javax.swing.JLabel showID;
-    private javax.swing.JLabel showIDFilm;
-    private javax.swing.JLabel showTheater;
-    private javax.swing.JLabel timeSchedule;
+    private javax.swing.JLabel showName;
+    private javax.swing.JLabel showRole;
     // End of variables declaration//GEN-END:variables
 
-    public void setConfirm(int id, int idFilm, String theater) { 
-        this.idSchedule.setText(Integer.toString(id)); 
-        this.filmIdSchedule.setText(Integer.toString(idFilm)); 
-        this.timeSchedule.setText(theater); 
-    }  
-    public int getID() { return Integer.parseInt(idSchedule.getText()); }
+    public void setConfirm(int id, String name, String role){
+        this.idStaff.setText(Integer.toString(id));
+        this.nameStaff.setText(name);
+        this.roleStaff.setText(role);
+    }
+    
+    public int getID(){return Integer.parseInt(idStaff.getText());}
+    
     public JButton getButtonNo() {return buttonNo;}
     public JButton getButtonYes() {return buttonYes;}
-    
+
     public void actionListener(ActionListener listen){
         this.buttonYes.addActionListener(listen);
         this.buttonNo.addActionListener(listen);
