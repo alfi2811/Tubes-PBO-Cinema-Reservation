@@ -61,7 +61,7 @@ public class ControllerAdmin {
         this.staff = staff;        
         frmAdminDashboard = new AdminDashboard();
         this.frmAdminDashboard.getButtonEdit().setEnabled(false);
-        this.frmAdminDashboard.getButtonDelete().setEnabled(false);        
+        this.frmAdminDashboard.getButtonDelete().setEnabled(false);
         
         this.frmAdminDashboard.actionListener(new ControllerAdmin.ButtonListener());
         this.frmAdminDashboard.mouseAdapter(new MousePressed());
@@ -103,7 +103,7 @@ public class ControllerAdmin {
         
         list.forEach((data) -> {            
             tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_film(), data.getTitle(), data.getGenre(), data.getDate_start(), data.getDate_end()});
-        });
+        });        
     }
     
     public final void loadListStaff(){
@@ -114,7 +114,7 @@ public class ControllerAdmin {
         
         listStaff.forEach((data) -> {            
             tbl.insertRow(tbl.getRowCount(), new Object[]{data.getId_staff(), data.getName(), data.getUsername(), data.getPhone(), data.getRole()});
-        });
+        });        
     }
     
     public final void loadListTransaction(){
@@ -142,7 +142,7 @@ public class ControllerAdmin {
         listSchedule.forEach((data) -> {            
             tblSchedule.insertRow(tblSchedule.getRowCount(), 
                     new Object[]{data.getId_schedule(), data.getFilm_id(), data.getTheater(), data.getTime(), data.getPrice()});
-        });           
+        });        
     }
     
     public final void insertFilm() throws ParseException{
@@ -421,10 +421,12 @@ public class ControllerAdmin {
         public void mousePressed(MouseEvent me) {
             // compiled code
             Object source = me.getSource();
-            if (source.equals(frmAdminDashboard.getTabelFilm()) || source.equals(frmAdminDashboard.getTabelStaff())) {                
+            if (source.equals(frmAdminDashboard.getTabelFilm()) || source.equals(frmAdminDashboard.getTabelSchedule()) || source.equals(frmAdminDashboard.getTabelStaff())) {                
                 frmAdminDashboard.getButtonEdit().setEnabled(true);
                 frmAdminDashboard.getButtonDelete().setEnabled(true);
-                loadListSchedule();                
+                if(source.equals(frmAdminDashboard.getTabelFilm())) {
+                    loadListSchedule();
+                }                
             } else if (source.equals(frmAdminDashboard.getTabAdmin())) {                              
                 int i = frmAdminDashboard.getTabelFilm().getSelectedRow();                
                 int tabIdx = frmAdminDashboard.getTabAdmin().getSelectedIndex();                    
