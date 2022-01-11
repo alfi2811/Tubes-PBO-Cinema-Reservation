@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class DAOAdmin {
     private List<ModelFilm> listFilm;
     private List<ModelSchedule> listSchedule;
-    private List<ModelTransaction> listTransaction;
+    private List<ModelTransaction> listTransaction;    
     
     
     public void insertFilm(ModelFilm Film) {
@@ -231,5 +231,5 @@ public class DAOAdmin {
             return null;
         }
     }
-    
+   
 }

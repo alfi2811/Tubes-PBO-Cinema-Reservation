@@ -25,7 +25,8 @@ import javax.swing.ListModel;
  */
 public class ControllerCashier {
     private List<ModelFilm> listFilm;
-    private List<ModelSchedule> listSchedule;    
+    private List<ModelSchedule> listSchedule;
+    private List<String> listSeatNoAv;
     private ModelStaff staff;
     private ModelFilm filmSel;
     private ModelSchedule scheduleSel;
@@ -87,18 +88,18 @@ public class ControllerCashier {
 
     public final void loadListSeat(){   
         List<String> listSeat = new ArrayList<>();        
-        List<String> listSeatNew = new ArrayList<>();        
+        listSeatNoAv = new ArrayList<>();        
         listSeat = daokasir.getSeatAvailable(scheduleSel.getId_schedule(), transaction.getDate_buy());
         
         DefaultListModel dataList = new DefaultListModel();
         listSeat.forEach((p) -> {            
             String[] arr = p.split("\\,", -1);
             for (String arr1 : arr) {                
-                listSeatNew.add(arr1);
+                listSeatNoAv.add(arr1);
             }
         });
         
-        listSeatNew.forEach((p) -> {
+        listSeatNoAv.forEach((p) -> {
             dataList.addElement(p);
         });
         this.frmChooseSeat.getListNotAvSeat().setModel(dataList);                
@@ -128,14 +129,27 @@ public class ControllerCashier {
     }
     public final void insertDataTransaction(){    
         if(frmChooseSeat.getSeat().equals("")) {
-            frmChooseSeat.displayError();
-        } else {
-            System.out.println("a"+ frmChooseSeat.getSeat());
+            frmChooseSeat.displayMsg("Seat belum dipilih");
+        } else {            
             String[] arr = frmChooseSeat.getSeat().split("\\,", -1);
-            transaction.setSeat(frmChooseSeat.getSeat());                
-            int totalPrice = scheduleSel.getPrice() * arr.length;
-            transaction.setTotal_price(totalPrice);
-            loadConfirmTransaction();
+            Boolean isThere = false;
+            for (String arr1 : arr) {
+                if(listSeatNoAv.contains(arr1)) {
+                    isThere = true;
+                    break;
+                }
+            }
+            if (isThere) {
+                frmChooseSeat.displayMsg("Seat tidak tersedia, Silakan pilih seat lainnya!");
+            } else {
+                transaction.setSeat(frmChooseSeat.getSeat());                
+                frmChooseSeat.setClear();
+                int totalPrice = scheduleSel.getPrice() * arr.length;
+                transaction.setTotal_price(totalPrice);
+                loadConfirmTransaction();
+                frmConfirmTransaction.setVisible(true);                
+                frmChooseSeat.setVisible(false);
+            }            
         }        
     }
     
@@ -170,9 +184,7 @@ public class ControllerCashier {
                 frmCashierDashboard.setVisible(false);
                 frmChooseSeat.setVisible(true);
             } else if (source.equals(frmChooseSeat.getButtonChoose())) {
-                insertDataTransaction();                
-                frmConfirmTransaction.setVisible(true);                
-                frmChooseSeat.setVisible(false);
+                insertDataTransaction();
             } else if (source.equals(frmConfirmTransaction.getButtonBuy())) {
                 loadSuccessTransaction();
                 insertTransaction();
