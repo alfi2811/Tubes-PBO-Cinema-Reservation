@@ -34,7 +34,6 @@ public class ChooseSeat extends javax.swing.JFrame {
     private void initComponents() {
 
         title = new javax.swing.JLabel();
-        buttonLogOut = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listSeat = new javax.swing.JList<>();
         instruction1 = new javax.swing.JLabel();
@@ -50,9 +49,6 @@ public class ChooseSeat extends javax.swing.JFrame {
 
         title.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         title.setText("Hi");
-
-        buttonLogOut.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        buttonLogOut.setText("Logout");
 
         listSeat.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "| A1 | A2 | A3 | A4 | A5 |", " ", "| B1 | B2 | B3 | B4 | B5 |", " ", "| C1 | C2 | C3 | C4 | C5 |", " ", "| D1 | D2 | D3 | D4 | D5 |", " ", "| E1 | E2 | E3 | E4 | E5 |", " ", " ", "       S  C  R  E  E  N" };
@@ -107,12 +103,10 @@ public class ChooseSeat extends javax.swing.JFrame {
                                 .addComponent(buttonChoose)
                                 .addGap(27, 27, 27)
                                 .addComponent(buttonCancel)))
-                        .addContainerGap(101, Short.MAX_VALUE))
+                        .addContainerGap(118, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(title)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonLogOut)
-                        .addGap(80, 80, 80))))
+                        .addGap(80, 575, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,11 +119,7 @@ public class ChooseSeat extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(title)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(buttonLogOut)))
+                        .addComponent(title)
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -189,7 +179,6 @@ public class ChooseSeat extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonChoose;
-    private javax.swing.JButton buttonLogOut;
     private javax.swing.JLabel instrcution2;
     private javax.swing.JLabel instruction1;
     private javax.swing.JLabel jLabel1;
@@ -204,22 +193,21 @@ public class ChooseSeat extends javax.swing.JFrame {
     public String getSeat(){return seatField.getText();}
     
     public JButton getButtonChoose() {return buttonChoose;}
-    public JButton getButtonCancel() {return buttonCancel;}
-    public JButton getButtonLogOut() {return buttonLogOut;}
+    public JButton getButtonCancel() {return buttonCancel;}    
     public JTextField getSeatField() {return seatField;}   
     public JList getListSeat(){ return this.listSeat; }
     public JList getListNotAvSeat(){ return this.listNotAvailableSeat; }
     public void setTitle(String title){ this.title.setText("Hi, " + title); }
+    public void setClear(){ 
+        this.seatField.setText("");
+    }
 
-    public void actionListener(ActionListener listen){        
-        this.buttonLogOut.addActionListener(listen);
+    public void actionListener(ActionListener listen){                
         this.buttonChoose.addActionListener(listen);
         this.buttonCancel.addActionListener(listen);
     }
     
-    public void displayError(){
-        JOptionPane.showMessageDialog(this, "Seat belum dipilih");
-    }
-    
-
+    public void displayMsg(String msg){
+        JOptionPane.showMessageDialog(this, msg);
+    }        
 }
